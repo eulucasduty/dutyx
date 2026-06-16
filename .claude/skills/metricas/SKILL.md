@@ -10,7 +10,7 @@ description: >
 
 # /metricas — ache seu padrão de viral e calibre o próximo (frente DutyX)
 
-Fecha o loop: medir → transcrever campeões → achar padrão → pontuar o próximo. Segue a **Lei**: ensina o conceito antes de rodar. Inspirada no fluxo Windsor + transcrição + banco — mas com **Whisper local no lugar de ferramenta paga de transcrição**.
+Fecha o loop: medir → transcrever campeões → achar padrão → pontuar o próximo. Segue a **Lei**: ensina o conceito antes de rodar. Inspirada no fluxo Windsor (métricas) + transcrição + banco — mas com **Whisper local no lugar do Algrow** (o transcritor do vídeo original).
 
 ## Setup (tudo grátis)
 - **Métricas:** **Windsor** (conector nativo do Claude, grátis — Conectores → Novo conector → login) puxa os números sozinho; OU **Instagram Insights** (você traz os tops na mão). Ver `setup/instagram-metricas.md`.

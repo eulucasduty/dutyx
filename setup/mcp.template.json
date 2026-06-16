@@ -1,5 +1,5 @@
 {
-  "_leia": "Modelo para um MCP LOCAL/customizado no Claude Code. Os conectores prontos (Windsor, Meta, Notion) NÃO se configuram aqui — eles ligam pelo fluxo de conectores do Claude Code (/mcp). Use este arquivo só se for rodar um servidor MCP próprio. Copie para a raiz do projeto como .mcp.json, troque os placeholders e remova as chaves que começam com _.",
+  "_leia": "Modelo para um MCP LOCAL/customizado. Os conectores prontos (Windsor, Meta, Higgsfield, Notion) NAO se configuram aqui — eles ligam em Conectores -> Novo conector -> fazer login, nativo do Claude. Use este arquivo so se for rodar um servidor MCP proprio. Copie para a raiz como .mcp.json, troque os placeholders e remova as chaves que comecam com _.",
   "_exemplo_stdio": "servidor MCP que roda por um comando local",
   "mcpServers": {
     "meu-mcp-local": {
