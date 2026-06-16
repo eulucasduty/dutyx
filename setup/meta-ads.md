@@ -4,11 +4,10 @@ Serve pra: a frente **`/trafego`** ler os números reais das suas campanhas (cus
 
 > Modo básico (sem Meta conectado): você descreve a campanha / cola os números do Gerenciador de Anúncios, e o DutyX analisa e monta o plano igual. O conector só automatiza a leitura.
 
-## Como conectar
-O Meta é um **conector (MCP)** — liga pelo **fluxo de conectores do Claude Code**:
-1. No Claude Code, abre os conectores (`/mcp` ou a tela de conectores).
-2. Procura **Meta** (Facebook/Instagram Ads) e conecta.
-3. Faz login no Facebook e autoriza o acesso à conta de anúncios.
+## Como conectar (é nativo do Claude)
+O Meta é um **conector nativo do Claude** — não instala nada, não edita arquivo:
+
+> **Conectores → Novo conector → Meta → fazer login** (no Facebook, autorizando a conta de anúncios).
 
 ## ⚠️ Cuidado (importante)
 Conectar dá ao sistema acesso a dados da sua conta de anúncios. **O DutyX te ajuda a PLANEJAR e LER** — quem aperta "publicar campanha" e mexe em dinheiro é você. Nunca deixe nenhuma ferramenta gastar verba sozinha.

@@ -8,7 +8,7 @@ O carrossel do DutyX é feito em **HTML (jeito Claude nativo)** — texto, layou
 - **Gemini (Google AI Studio)** — tier grátis (~500 imagens/dia, modelo "Nano Banana"); precisa de uma chave grátis do AI Studio.
 
 ## Pago (opcional — só se quiser estilo/qualidade premium)
-- **Higgsfield**, Midjourney, etc. — pagos. Ficam como upgrade pra quem precisa de um visual muito específico. **Não são necessários.**
+- **Higgsfield** e cia — pagos, mas conectam fácil: são **conectores nativos do Claude** (**Conectores → Novo conector → login**). Ficam como upgrade pra quem quer um visual muito específico. **Não são necessários.**
 
 ## Como o DutyX usa
 1. Quando o `/carrossel` decidir que um slide precisa de imagem real, ele **te avisa** e pergunta se você já tem um gerador conectado.

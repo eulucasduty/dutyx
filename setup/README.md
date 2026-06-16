@@ -1,33 +1,37 @@
 # ⚙️ Setup do arsenal — DutyX (turbo é de graça)
 
-O DutyX funciona **sem instalar nada** (modo básico). E o **modo turbo** — o melhor resultado — foi montado pra rodar **só com ferramentas GRATUITAS**. Ferramenta paga aqui é sempre **opcional**, e vem marcada como tal. (A skill **`/configurar`** te conduz por aqui, uma coisa de cada vez.)
+O DutyX funciona **sem instalar nada** (modo básico). E o **modo turbo** — o melhor resultado — roda **só com ferramentas GRATUITAS**. (A skill **`/configurar`** te conduz por aqui, uma coisa de cada vez.)
 
-## O arsenal grátis (o turbo "pra todo mundo")
+## 🔌 Como ligar os conectores (o jeito mais fácil)
+A maior parte do arsenal são **conectores NATIVOS do Claude** — você não instala nada nem edita arquivo. É só:
 
-| O que | Ferramenta grátis | Custo | Guia |
+> **Conectores → Novo conector → escolher a ferramenta → fazer login.**
+
+Funciona assim pra **Windsor, Meta, Higgsfield, Notion, Algrow** e companhia. Depois de logar, o DutyX já usa.
+
+## O arsenal grátis (o turbo pra todo mundo)
+
+| O que | Ferramenta | Como liga | Custo |
 |---|---|---|---|
-| Transcrever vídeo | **Whisper local** (open-source, roda no seu PC, offline) | grátis (instala 1x) | `whisper-local.md` |
-| Métricas do Instagram | **Instagram Insights** (nativo do app) + você informa os tops | grátis | `instagram-metricas.md` |
-| Imagem real no carrossel | **Pollinations** (sem cadastro), **Cloudflare**, **Gemini free** | grátis | `imagens.md` |
-| Banco de campeões | fica no próprio sistema (`saidas/`) | grátis | — |
+| Métricas do Instagram | **Windsor** (conector) | Conectores → Novo conector → login | **grátis** |
+| Métricas (alternativa manual) | **Instagram Insights** (nativo do app) | você traz os tops | grátis |
+| Anúncios | **Meta** (conector) | Conectores → Novo conector → login | grátis |
+| Transcrever vídeo | **Whisper local** (no seu PC) | baixar 1x (ver `whisper-local.md`) | **grátis** |
+| Imagem real no carrossel | **Pollinations** (sem cadastro) / Gemini free | gera por link / chave grátis | grátis |
+| Banco de campeões | no próprio sistema (`saidas/`) | automático | grátis |
 
-## Upgrades pagos (100% opcionais — só se você quiser)
+## Upgrades opcionais (só se quiser)
+- **Higgsfield** (conector) — imagem premium. Pago. Liga igual: Conectores → Novo conector → login.
+- **Notion** (conector) — banco na nuvem. Tem tier grátis.
 
-| O que | Ferramenta | Por que pagar |
-|---|---|---|
-| Métricas automáticas | **Windsor** (MCP) | puxa tudo sozinho em vez de você informar | 
-| Imagem premium | **Higgsfield** e cia | qualidade/estilo específicos |
-| Banco na nuvem | **Notion** | se você já vive no Notion (tem tier grátis também) |
-
-> Nada de pago é necessário. O turbo grátis já entrega o melhor resultado pra 99% dos casos.
+> Nada pago é necessário. O turbo grátis já entrega o melhor resultado.
 
 ## Guias
-- `whisper-local.md` — transcrição grátis no seu PC
-- `instagram-metricas.md` — métricas grátis (Insights nativo) pra alimentar a `/metricas`
-- `imagens.md` — geradores de imagem grátis (pro carrossel quando precisar de foto real)
-- `windsor.md` — atalho pago de métricas (opcional)
-- `notion.md` — banco na nuvem (opcional)
-- `mcp.template.json` — modelo pra MCP local/customizado
+- `whisper-local.md` — transcrição grátis no seu PC (precisa baixar 1x)
+- `instagram-metricas.md` — métricas (Windsor conector OU Insights manual)
+- `imagens.md` — geradores de imagem grátis (carrossel com foto real)
+- `windsor.md` · `meta-ads.md` · `notion.md` — conectores
+- `mcp.template.json` — só pra MCP local/customizado (a maioria NÃO precisa disso)
 
 ## Regra de ouro
-Toda ferramenta externa é um lugar a mais onde dá pra travar. Se algo não conectar, **não trave** — volta pro modo básico e segue. O DutyX foi feito pra você nunca ficar preso.
+Se algo não conectar, **não trave** — volta pro modo básico e segue. O DutyX foi feito pra você nunca ficar preso.

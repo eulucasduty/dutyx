@@ -1,27 +1,20 @@
-# 🎙️ Whisper local — transcrever vídeo no seu PC (de graça)
+# 🎙️ Whisper local — a transcrição do DutyX (grátis, no seu PC)
 
-Serve pra: o DutyX transcrever vídeos (seus campeões na `/metricas`, ou referências no `/aprender-video`) **sem pagar ferramenta nenhuma e sem mandar seu conteúdo pra fora**. É o modo **turbo** — avançado, mas vale.
+**A funcionalidade de transcrição do DutyX roda com o Whisper local.** É o que faz o `/aprender-video` (aprender com vídeos) e o `/metricas` (transcrever seus campeões) funcionarem. É **100% grátis** e roda **na sua máquina** (offline, privado) — mas, justamente por rodar no seu PC, **você precisa baixar ele uma vez** pra usar. Diferente dos outros (Windsor, Meta…), o Whisper **não é um conector** — é um programa gratuito que fica no seu computador.
 
-> **Não quer instalar agora?** Sem problema. No modo básico você cola a legenda/fala do vídeo e o DutyX trabalha igual. Volte aqui quando quiser automatizar.
+> ⚠️ **Consciência:** sem o Whisper baixado, o DutyX **não transcreve sozinho**. Você ainda pode usar tudo colando a legenda/fala na mão (modo básico) — mas pra ter a transcrição automática e grátis, instale o Whisper (uma vez só).
 
-## O que você vai precisar (3 coisas)
-1. **ffmpeg** — separa o áudio do vídeo. (Pesquisa "instalar ffmpeg" pro seu sistema; no Windows dá pra instalar com `winget install Gyan.FFmpeg`.)
-2. **whisper.cpp** — o transcritor que roda no seu PC. Baixa uma versão pronta (release) do whisper.cpp pro seu sistema.
-3. **Um modelo** — o "cérebro" do whisper. O `ggml-small` é um ótimo começo (rápido e bom em português). Baixa o arquivo do modelo e guarda numa pasta.
+## O que baixar (3 coisas, tudo grátis)
+1. **ffmpeg** — separa o áudio do vídeo. (Windows: `winget install Gyan.FFmpeg`.)
+2. **whisper.cpp** — o transcritor que roda no seu PC (baixa uma versão pronta/release pro seu sistema).
+3. **Um modelo** — o "cérebro" do Whisper. O `ggml-small` é ótimo começo (rápido e bom em português).
 
-## Como ligar no DutyX
-1. Anota os caminhos de onde ficaram **o whisper** e **o modelo** no seu PC.
-2. Abre o `scripts/transcrever.mjs` (na pasta do DutyX) e confere/edita as duas linhas do topo (`WHISPER` e `MODEL`) pra apontarem pros seus arquivos. (Ou define as variáveis de ambiente `DUTYX_WHISPER` e `DUTYX_MODEL`.)
-3. Pra transcrever um vídeo:
-   ```
-   node scripts/transcrever.mjs "caminho/do/seu/video.mp4"
-   ```
-   Sai um `.txt` com a fala, em português, na pasta `saidas/transcricoes/`.
+## Ligar no DutyX
+1. Anote onde ficaram **o whisper** e **o modelo**.
+2. No `scripts/transcrever.mjs` (pasta do DutyX), aponte as linhas `WHISPER` e `MODEL` pros seus arquivos (ou use as variáveis de ambiente `DUTYX_WHISPER` / `DUTYX_MODEL`).
+3. Transcreva: `node scripts/transcrever.mjs "caminho/do/video.mp4"` → sai um `.txt` em `saidas/transcricoes/`.
 
-## Bom saber
-- Precisa do **Node** instalado (o mesmo que você já usa pro Claude Code).
-- O whisper às vezes escreve "Cloud" quando a pessoa fala "Claude" — normal, é só ignorar.
-- Funciona offline depois de instalado. Seu conteúdo não sai do seu PC.
+(Precisa do **Node** instalado — o mesmo que roda o Claude Code. O Whisper às vezes escreve "Cloud" no lugar de "Claude" — normal.)
 
 ## Se travar
-Me fala em que passo travou (qual mensagem apareceu) que eu te desenrolo. E enquanto isso, seguimos no básico — você não fica parado por causa disso.
+Me diz em que passo travou que eu te desenrolo — e enquanto isso seguimos no básico (colar a legenda). Você nunca fica parado.

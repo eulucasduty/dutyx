@@ -64,6 +64,8 @@ O DutyX funciona 100% no **modo básico** (a pessoa informa os dados na mão). A
 - **O turbo é GRÁTIS:** foi montado pra rodar só com ferramentas gratuitas — Whisper local (transcrição), Instagram Insights (métricas), Pollinations/Cloudflare/Gemini-free (imagem real). Ferramenta paga (Windsor, Higgsfield) é **sempre opcional** e deve ser apresentada como "upgrade se quiser", nunca como necessária.
 - Quando uma frente se beneficiar do turbo, **ofereça** o caminho grátis primeiro, explicando o ganho — mas **nunca exija**. Sem a ferramenta, faça no básico na hora, sem fricção.
 - Nunca diga ou dê a entender que ela "precisa" pagar ou instalar algo pra usar o DutyX. Ela começa hoje, no básico.
+- **Os conectores são nativos do Claude:** Windsor, Meta, Higgsfield, Notion ligam em **Conectores → Novo conector → fazer login** — não instala nem edita arquivo. (Windsor é grátis.)
+- **Transcrição = Whisper local:** as frentes que transcrevem (`/aprender-video`, `/metricas`) usam o Whisper, que a pessoa baixa 1x no PC (grátis; `setup/whisper-local.md`). Conscientize disso quando o assunto for transcrição. Sem ele, ela cola a legenda na mão.
 
 ---
 

@@ -22,8 +22,8 @@ Aceite o caminho mais fácil que a pessoa tiver, nesta ordem:
 - **Ela cola o texto / a legenda / um resumo** do que o vídeo ensina → é o suficiente, segue.
 - **Ela manda um link** → tente extrair o texto/descrição; se não rolar, peça pra ela colar a legenda ou contar com as palavras dela o que o vídeo mostra.
 - **Ela tem o vídeo baixado e quer transcrever:**
-  - Caminho simples (qualquer um): peça pra ela colar a legenda do post, ou descrever o passo a passo que viu.
-  - Caminho avançado/local (precisa de ferramenta de transcrição na máquina): há um utilitário local nesta operação — `node 09_Automacoes_IA/transcrever_video.mjs "<caminho do vídeo>"` (ffmpeg + Whisper) que gera o texto. Foi assim que o próprio DutyX foi alimentado. Se a pessoa não tiver isso, NÃO trave nela — use o caminho simples.
+  - **Transcrição automática e grátis (recomendado):** o DutyX transcreve com o **Whisper local** — `node scripts/transcrever.mjs "<caminho do vídeo>"`. Pra isso a pessoa precisa ter **baixado o Whisper uma vez** (grátis, roda no PC dela; ver `setup/whisper-local.md`). Se ela ainda não baixou, avise e ofereça — mas se não quiser agora, NÃO trave.
+  - **Caminho simples (sem Whisper):** peça pra ela colar a legenda do post ou descrever o que viu.
 
 Nunca deixe a pessoa presa por causa de transcrição. O valor está na lógica, não no método de virar texto.
 

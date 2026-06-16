@@ -4,11 +4,10 @@ Serve pra: espelhar o **banco de campeões** da `/metricas` (seus virais + trans
 
 > O vídeo que inspirou a `/metricas` usava o Notion como banco. No DutyX, o banco é nativo (fica em `saidas/`) — o Notion é só pra quem quer ter isso também na nuvem/organizado lá.
 
-## Como conectar
-O Notion é um **conector (MCP)** — liga pelo **fluxo de conectores do Claude Code**:
-1. No Claude Code, abre os conectores (`/mcp` ou a tela de conectores).
-2. Procura **Notion** e conecta.
-3. Faz login e autoriza o acesso à(s) página(s) que você quiser usar de banco.
+## Como conectar (é nativo do Claude)
+O Notion é um **conector nativo do Claude**:
+
+> **Conectores → Novo conector → Notion → fazer login**, autorizando a(s) página(s) que vai usar de banco.
 
 ## Se não usar
 Não precisa de nada. O banco de campeões fica em `saidas/metricas/banco.md` e `padrao.md` — funciona sozinho.

@@ -9,9 +9,8 @@ A frente **`/metricas`** acha o seu padrão de viral a partir dos seus campeões
 
 É manual? Um pouco. Mas é **grátis, 100% seu** e funciona pra qualquer pessoa.
 
-## Modo automático (opcional)
-- **Meta Graph API** (grátis, mas setup técnico): dá pra puxar os dados da sua conta por API, sem custo — exige criar um app no Meta for Developers. Avançado.
-- **Windsor** (pago, ver `windsor.md`): puxa tudo sozinho, sem trabalho manual. Atalho pago — opcional.
+## Modo automático (grátis também)
+- **Windsor** (conector nativo do Claude, **grátis** — ver `windsor.md`): puxa as métricas sozinho, sem digitação. Liga em **Conectores → Novo conector → Windsor → login**. É a forma automática e gratuita — recomendado se você não quer trabalho manual.
 
 ## Importante
 Não precisa de Windsor nem de API nenhuma pra usar a `/metricas`. O modo grátis (você traz os tops dos Insights) entrega o mesmo loop — achar seu padrão e calibrar o próximo roteiro. O automático só te poupa a digitação.
