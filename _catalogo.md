@@ -18,7 +18,7 @@
 | Frente | Comando | O que entrega |
 |---|---|---|
 | **Landing Page** | `/landing-page` | uma página que converte, do zero, na sua marca |
-| **Site Foda** | `/site-foda` | site/LP com motion e 3D (o efeito "uau" que prende o olho) |
+| **Site Foda** | `/site-foda` | o "site de US$10k": animação de agência (Framer Motion/GSAP) + componentes 21st.dev + 3D, na sua marca |
 | **Tráfego** | `/trafego` | plano de tráfego (orgânico + pago), anúncio e leitura de métrica |
 | **Social Media** 🆕 | `/social-media` | a aba de redes sociais: ideias, linha editorial, legenda e hashtags — e o hub que liga carrossel, roteiro e métricas |
 | ↳ Carrossel | `/carrossel` | carrossel de Instagram, feito em código (jeito Claude nativo) → exporta PNG |

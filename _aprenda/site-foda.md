@@ -17,6 +17,15 @@ Site foda **não é** o que tem mais animação. É o que usa movimento **com in
 - **Spline** ou **Three.js** = o que coloca **3D** na página. Spline é mais fácil (você monta o 3D numa ferramenta visual e embeda); Three.js é mais poderoso e mais pesado. Pra começar, Spline resolve 90% dos casos.
 - **HTML/CSS/JS** = o esqueleto, a roupa e o comportamento (ver a lição de `_aprenda/landing-page.md`). O motion é uma camada POR CIMA de uma base bem feita — sem base boa, motion não salva.
 
+## A pilha do "site de US$10k" (as 4 camadas)
+O que separa um "site de IA" genérico de um "site de agência" **não é sorte — é a configuração que você dá ao Claude ANTES de mandar construir.** São 4 camadas:
+1. **Claude Code** — o desenvolvedor: lê o projeto inteiro, edita vários arquivos, roda comandos, itera.
+2. **Animação (Framer Motion ou GSAP)** — o que dá vida: fade no scroll, revelações escalonadas, hover suave. É *isso* que faz parecer agência, não IA.
+3. **Skill de design (gosto)** — ensina taste ao Claude: escala tipográfica, grade de 8px, tokens de cor, hierarquia — e a **evitar a "estética genérica de IA"**. Sem ela, sai um Tailwind padrão sem alma.
+4. **Componentes prontos (21st.dev)** — blocos profissionais (hero, pricing, navbar, depoimentos) que você adapta à sua marca, pulando ~80% do trabalho.
+
+> A regra de ouro: **o Claude Code é tão bom quanto o ambiente, as animações, o gosto de design e os componentes que você dá a ele.** A configuração vem ANTES do prompt. Agência cobra R$10–30k e leva 6–12 semanas por isso; com a pilha certa, são dias.
+
 ## ⚠️ Performance: o assassino silencioso (a regra mais importante daqui)
 
 Um site lindo que demora 8 segundos pra abrir no celular **converte menos** que um site simples e rápido. A maioria das pessoas vai abrir no 4G, num celular mediano. Então:

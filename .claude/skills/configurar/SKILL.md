@@ -28,6 +28,7 @@ Depois de logar, o DutyX já usa. (O Whisper é a exceção: não é conector, �
 | **Meta** (conector) | dados dos seus anúncios | Conectores → Novo conector → login | `/trafego` |
 | **Whisper local** | transcrever vídeos no seu PC | **baixar 1x** (ver `setup/whisper-local.md`) | `/aprender-video`, `/metricas` |
 | **Pollinations / Gemini free** | imagem real no carrossel | link sem cadastro / chave grátis (`setup/imagens.md`) | `/carrossel` |
+| **21st.dev** (copiar do site) + **Framer Motion** + **frontend-design** | site de agência: componentes + animação + gosto de design | copiar componente (grátis) / `npm install framer-motion` (`setup/componentes-21st.md`) | `/site-foda` |
 | Instagram Insights (manual) | métricas sem conectar nada | você traz os tops | `/metricas` |
 
 **Opcional (pago ou nuvem):**
@@ -35,6 +36,7 @@ Depois de logar, o DutyX já usa. (O Whisper é a exceção: não é conector, �
 |---|---|---|
 | **Higgsfield** (conector) | imagem premium | Conectores → Novo conector → login |
 | **Notion** (conector) | banco na nuvem (tem tier grátis) | Conectores → Novo conector → login |
+| **21st.dev Magic** (`/ui`) | gerar componente automático no editor | freemium, chave própria (MCP local — `setup/componentes-21st.md`) |
 
 ## Conscientização sobre o Whisper (transcrição)
 A transcrição do DutyX (no `/aprender-video` e no `/metricas`) **roda com o Whisper local** — grátis, no PC da pessoa. **Pra usar, ela precisa baixar o Whisper uma vez** (`setup/whisper-local.md`). Deixe isso claro quando o assunto for transcrição. Sem o Whisper, dá pra colar a legenda/fala na mão (básico) — nunca trave a pessoa.
