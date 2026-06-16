@@ -25,7 +25,7 @@ Conduza pela lição `_aprenda/metricas.md`: vaidade vs sinal; o loop dos 4 pass
 2-3 perguntas: "o que pra você é 'deu certo' — mais seguidor, mais salvamento, mais venda?" (define o sinal); "você tem Windsor e Whisper ligados, ou vamos no modo básico?"; "qual a janela — últimos 90 dias, 365?".
 
 ## 3. O COMO (constrói)
-1. **Medir:** com Windsor (MCP), puxe as métricas do perfil e separe os **campeões** pelo sinal escolhido (não só view). No básico, peça à pessoa a lista dos top posts com os números.
+1. **Medir:** com o **conector Windsor** (grátis), puxe as métricas do perfil e separe os **campeões** pelo sinal escolhido (não só view). No básico, peça à pessoa a lista dos top posts com os números.
 2. **Transcrever os campeões:** rode o Whisper local nos vídeos campeões (script de transcrição — ver `/configurar` e `scripts/`). No básico, peça as legendas/falas.
 3. **Montar o banco:** salve cada campeão em `saidas/metricas/banco.md` (uma linha por vídeo) no formato de `_blocos/metricas/banco.md` — métrica + transcrição + tema/hook. (Notion é opcional: se a pessoa usar, dá pra espelhar lá.)
 4. **Achar o padrão:** analise o banco e escreva, em `saidas/metricas/padrao.md`, o que os campeões têm em comum: tipo de hook, tema, estrutura, duração, CTA. Esse arquivo vira a régua.
