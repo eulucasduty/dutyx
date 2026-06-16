@@ -43,7 +43,8 @@ Só siga pro como depois das respostas. Se a ideia central ainda estiver vaga ("
 3. Capriche no **slide 1** — gere 3 opções de capa/hook e deixe a pessoa escolher. É onde mora 80% do resultado.
 4. Para cada slide, entregue: **(a)** o texto que vai na tela (curto), **(b)** a sugestão visual (cor de fundo da marca, imagem/ícone, layout), **(c)** uma nota de design se precisar.
 5. Escreva também a **legenda do post** (1ª linha que prende + corpo que aprofunda + CTA + 3-5 hashtags do nicho dela).
-6. **Monte os slides em HTML/CSS** (jeito Claude nativo) com `claude-design` — um arquivo `carrossel.html` com cada slide num quadro 1080×1350, nas cores/fontes do cliente (`_blocos/carrossel/estrutura.md`). Gere foto/ilustração de fundo (Gemini) só quando o slide pedir. "No zero" de marca → default elegante, e avise.
+6. **Monte os slides em HTML/CSS** (jeito Claude nativo) com `claude-design` — um arquivo `carrossel.html` com cada slide num quadro 1080×1350, nas cores/fontes do cliente (`_blocos/carrossel/estrutura.md`). "No zero" de marca → default elegante, e avise.
+   - **Se o slide pedir uma IMAGEM REAL** (foto, cena, ilustração realista): o HTML não faz isso. **Avise a pessoa** que pra esse tipo de imagem precisa conectar um gerador — e ofereça o caminho **grátis** primeiro (Pollinations sem cadastro, Cloudflare, ou Gemini free — ver `setup/imagens.md`); Higgsfield e cia são opção paga. **Nunca trave:** se ela não quiser conectar nada, monte o slide 100% em HTML mesmo (cor, tipografia, formas) e siga.
 7. **Exporte pra PNG:**
    - **Caminho simples (qualquer um):** abre o `carrossel.html` no navegador e tira print de cada slide (ou usa a função de exportar/print). Funciona sem instalar nada.
    - **Turbo (se tiver Node/Playwright — ver `/configurar`):** roda o render que transforma cada slide do HTML em PNG automático.

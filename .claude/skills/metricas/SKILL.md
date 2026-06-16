@@ -12,9 +12,11 @@ description: >
 
 Fecha o loop: medir → transcrever campeões → achar padrão → pontuar o próximo. Segue a **Lei**: ensina o conceito antes de rodar. Inspirada no fluxo Windsor + transcrição + banco — mas com **Whisper local no lugar de ferramenta paga de transcrição**.
 
-## Setup (modo turbo x básico)
-- **Turbo (melhor resultado):** **Windsor** conectado (métricas reais do perfil) + **Whisper local** (transcrever campeões). Ver `/configurar`.
-- **Básico (sem nada extra):** a pessoa informa os dados na mão (cola os números dos top posts + as falas/legendas). Funciona, só dá mais trabalho. **Nunca trave a pessoa por falta de MCP** — ofereça o básico na hora.
+## Setup (grátis pra todo mundo)
+- **Grátis (recomendado):** **Instagram Insights** (nativo do app — você traz os tops; ver `setup/instagram-metricas.md`) + **Whisper local** (transcreve os campeões, grátis; ver `setup/whisper-local.md`) + banco no próprio sistema. Loop completo, custo zero.
+- **Modo manual puro:** sem nem o Whisper — a pessoa cola os números E as falas/legendas. Funciona igual, só dá mais trabalho.
+- **Pago/opcional:** **Windsor** (puxa as métricas sozinho, sem digitar). Atalho, não necessário.
+- **Nunca trave a pessoa por falta de ferramenta** — ofereça o caminho grátis/manual na hora.
 
 ## 1. O QUÊ (ensina — não pule)
 Conduza pela lição `_aprenda/metricas.md`: vaidade vs sinal; o loop dos 4 passos; e o ponto-chave — achar o SEU padrão em vez de copiar trend. Curto.

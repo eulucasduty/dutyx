@@ -18,14 +18,23 @@ O DutyX funciona no modo **básico** sem instalar nada — você informa os dado
 3. Mande o passo a passo do guia em `setup/<ferramenta>.md`, acompanhando.
 4. Se travar, traduza o erro e resolva junto. Se não rolar agora, registre como "pendente" e siga no modo básico — o trabalho não para.
 
-## O arsenal (o que conectar e por quê)
+## O arsenal — turbo é GRÁTIS (pago só se quiser)
 
-| Ferramenta | Destrava | Potencializa | Guia | Nível |
-|---|---|---|---|---|
-| **Whisper local** | transcrever vídeos no seu PC, de graça | `/aprender-video`, `/metricas` | `setup/whisper-local.md` | turbo |
-| **Windsor** (MCP) | métricas reais do seu Instagram | `/metricas`, `/social-media` | `setup/windsor.md` | turbo |
-| **Meta** (MCP) | dados/gestão de anúncios | `/trafego` | `setup/meta-ads.md` | turbo |
-| **Notion** (MCP) | guardar o banco de campeões fora do PC | `/metricas` | `setup/notion.md` | opcional |
+**Grátis (o turbo pra todo mundo):**
+| Ferramenta | Destrava | Potencializa | Guia |
+|---|---|---|---|
+| **Whisper local** | transcrever vídeos no seu PC, offline | `/aprender-video`, `/metricas` | `setup/whisper-local.md` |
+| **Instagram Insights** (nativo) | métricas do seu perfil, de graça | `/metricas`, `/social-media` | `setup/instagram-metricas.md` |
+| **Pollinations / Cloudflare / Gemini free** | imagem real no carrossel (quando precisar) | `/carrossel` | `setup/imagens.md` |
+| Banco no próprio sistema (`saidas/`) | guardar campeões | `/metricas` | — |
+
+**Pago (upgrade opcional — nunca necessário):**
+| Ferramenta | Por que pagar | Guia |
+|---|---|---|
+| **Windsor** (MCP) | métricas automáticas (sem digitar) | `setup/windsor.md` |
+| **Higgsfield** e cia | imagem premium | `setup/imagens.md` |
+| **Notion** (MCP) | banco na nuvem (tem tier grátis) | `setup/notion.md` |
+| **Meta** (MCP) | dados de anúncio automáticos (a API é grátis, mas o setup é técnico) | `setup/meta-ads.md` |
 
 ## Como os MCPs se conectam (o jeito certo)
 A maioria desses (Windsor, Meta, Notion) se conecta pelo **fluxo de conectores do Claude Code** (o comando `/mcp` no Claude Code, ou a tela de conectores do app) — você autoriza com login, sem editar arquivo. Pra um MCP **local/customizado**, existe o modelo `setup/mcp.template.json` (esqueleto comentado). O guia de cada ferramenta diz qual caminho usar.

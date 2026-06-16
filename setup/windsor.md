@@ -1,8 +1,10 @@
-# 📊 Windsor — métricas reais do seu Instagram
+# 📊 Windsor — métricas automáticas (upgrade PAGO, opcional)
 
-Serve pra: a frente **`/metricas`** puxar os números do seu perfil sozinha (top vídeos, retenção, seguidores ganhos) em vez de você digitar na mão. Também turbina o **`/social-media`** (ideias baseadas no que já funciona).
+> ⚠️ **Isto é um atalho PAGO e 100% opcional.** O jeito **grátis** de alimentar a `/metricas` está em `instagram-metricas.md` (Instagram Insights nativo). Só vale o Windsor se você quer evitar a digitação manual e topa pagar pela comodidade.
 
-> Modo básico (sem Windsor): você informa os números dos seus top posts no chat e o DutyX trabalha igual. O Windsor só automatiza.
+Serve pra: a frente **`/metricas`** puxar os números do seu perfil sozinha (top vídeos, retenção, seguidores ganhos) em vez de você informar na mão. Também turbina o **`/social-media`**.
+
+> Modo grátis (recomendado): você traz os tops dos seus Insights (ver `instagram-metricas.md`) e o DutyX faz o mesmo loop. O Windsor só te poupa a digitação.
 
 ## Como conectar
 O Windsor é um **conector (MCP)** — você liga pelo **fluxo de conectores do Claude Code**:

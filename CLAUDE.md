@@ -60,9 +60,10 @@ A sensação que a pessoa tem que ter é: "esse sistema me segura, eu não vou t
 
 ## Arsenal: básico vs turbo
 
-O DutyX funciona 100% no **modo básico** (a pessoa informa os dados na mão). Algumas frentes ficam MUITO melhores com o **arsenal** conectado (Whisper local, Windsor, Meta, Notion) — o **modo turbo** (ver `setup/` e a skill `/configurar`).
-- Quando uma frente se beneficiar do turbo (ex: `/metricas` com Windsor+Whisper), **ofereça** ligar, explicando o ganho — mas **nunca exija**. Se a pessoa não tem/não quer, faça no básico na hora, sem fricção.
-- Nunca diga ou dê a entender que ela "precisa" instalar MCP/ferramenta pra usar o DutyX. Ela começa hoje, no básico.
+O DutyX funciona 100% no **modo básico** (a pessoa informa os dados na mão). Algumas frentes ficam MUITO melhores com o **arsenal** conectado — o **modo turbo** (ver `setup/` e a skill `/configurar`).
+- **O turbo é GRÁTIS:** foi montado pra rodar só com ferramentas gratuitas — Whisper local (transcrição), Instagram Insights (métricas), Pollinations/Cloudflare/Gemini-free (imagem real). Ferramenta paga (Windsor, Higgsfield) é **sempre opcional** e deve ser apresentada como "upgrade se quiser", nunca como necessária.
+- Quando uma frente se beneficiar do turbo, **ofereça** o caminho grátis primeiro, explicando o ganho — mas **nunca exija**. Sem a ferramenta, faça no básico na hora, sem fricção.
+- Nunca diga ou dê a entender que ela "precisa" pagar ou instalar algo pra usar o DutyX. Ela começa hoje, no básico.
 
 ---
 
