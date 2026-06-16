@@ -1,0 +1,18 @@
+# Lixo de sistema
+.DS_Store
+Thumbs.db
+
+# Node (se algum script opcional usar)
+node_modules/
+
+# Sessões do Claude Code (estado local, não versionar)
+.claude/sessions/
+.claude/.cache/
+
+# Outputs do cliente — ficam no computador dele, não vão pro repo público
+saidas/*
+!saidas/.gitkeep
+
+# Logo do cliente (cada um coloca o seu)
+_contexto/logo.png
+_contexto/logo.svg
