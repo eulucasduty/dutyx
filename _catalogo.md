@@ -10,6 +10,7 @@
 | `/abrir` | Começo de sessão. Carrega seu contexto e te diz o que dá pra atacar hoje. |
 | `/salvar` | Faz backup de tudo no seu GitHub (histórico + segurança). |
 | `/atualizar` | Revisa e arruma sua memória quando algo mudou no negócio. |
+| `/aprender-video` | Você joga um vídeo/técnica que achou por aí (reel de IA, tutorial, print, link ou texto) e o DutyX **absorve a lógica** e passa a aplicar no seu negócio. O sistema cresce com você. |
 
 ## Frentes (o que dá pra construir)
 
