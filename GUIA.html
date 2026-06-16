@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DutyX — Guia Completo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0B; --panel:#141417; --panel2:#1C1C20; --line:#2A2A30;
+    --ink:#F4F4F5; --muted:#A1A1AA; --orange:#FF7A18; --glow:#FFB066;
+    --mono:'JetBrains Mono',monospace; --disp:'Space Grotesk',sans-serif; --body:'Manrope',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg); color:var(--ink); font-family:var(--body); line-height:1.6; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 460px at 88% -10%, rgba(255,122,24,.10), transparent 60%);}
+  .wrap{max-width:880px; margin:0 auto; padding:56px 28px 64px}
+  a{color:var(--orange); text-decoration:none}
+
+  /* header */
+  .brand{font-family:var(--disp); font-weight:700; font-size:34px; letter-spacing:-.02em}
+  .brand b{color:var(--orange)}
+  .kick{font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--orange); margin-top:8px}
+  .lead{font-size:18px; color:var(--muted); margin-top:18px; max-width:62ch}
+  .lead b{color:var(--ink)}
+  hr{border:none; border-top:1px solid var(--line); margin:36px 0}
+
+  /* toc */
+  .toc{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px}
+  .toc a{font-family:var(--mono); font-size:12.5px; color:var(--ink); background:var(--panel); border:1px solid var(--line); padding:6px 11px; border-radius:8px}
+  .toc a:hover{border-color:var(--orange)}
+
+  h2{font-family:var(--disp); font-weight:700; font-size:26px; letter-spacing:-.02em; margin:46px 0 6px; scroll-margin-top:20px}
+  h2 .n{color:var(--orange); font-size:16px; font-family:var(--mono); margin-right:10px; vertical-align:middle}
+  h3{font-family:var(--disp); font-weight:600; font-size:17px; margin:26px 0 10px; color:var(--glow)}
+  p{margin:10px 0; color:#D4D4D8}
+  p.note{color:var(--muted); font-size:15px}
+  .law{background:linear-gradient(180deg, rgba(255,122,24,.08), rgba(255,122,24,.02)), var(--panel); border:1px solid rgba(255,122,24,.28); border-radius:16px; padding:22px 24px; margin:18px 0}
+  .law b{color:var(--orange)}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:15px}
+  th,td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+  td:first-child{white-space:nowrap}
+  code,.cmd{font-family:var(--mono); font-size:13px; color:var(--ink); background:var(--panel2); border:1px solid var(--line); padding:2px 8px; border-radius:6px}
+  .cmd .s{color:var(--orange)}
+
+  .steps{counter-reset:s; margin:14px 0}
+  .steps li{list-style:none; position:relative; padding:10px 0 10px 44px; border-bottom:1px solid var(--line)}
+  .steps li:before{counter-increment:s; content:counter(s); position:absolute; left:0; top:9px; width:28px; height:28px; border-radius:8px; background:rgba(255,122,24,.12); border:1px solid rgba(255,122,24,.4); color:var(--orange); font-family:var(--disp); font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center}
+  ul.dash{list-style:none; margin:10px 0}
+  ul.dash li{padding:5px 0 5px 18px; position:relative; color:#D4D4D8}
+  ul.dash li:before{content:"—"; position:absolute; left:0; color:var(--orange)}
+
+  .foot{margin-top:50px; padding-top:22px; border-top:1px solid var(--line); font-family:var(--mono); font-size:12.5px; color:var(--muted)}
+  .foot b{color:var(--ink)}
+
+  @media print{
+    body{background:#fff; color:#111; background-image:none}
+    .wrap{max-width:100%}
+    .toc{display:none}
+    h2,.brand{color:#111} h2 .n{color:#c4560a}
+    h3{color:#c4560a}
+    p,td,ul.dash li{color:#222}
+    .law{background:#faf3ec; border-color:#e7c9a8}
+    code,.cmd{background:#f1f1f1; border-color:#ddd; color:#111}
+    th{color:#666}
+    a{color:#c4560a}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">Duty<b>X</b></div>
+  <div class="kick">Guia completo · como funciona e como usar</div>
+  <p class="lead">O DutyX é um <b>sistema que você instala numa pasta</b> e usa com o Claude Code. Você conta o seu negócio pra ele uma vez, e a partir daí ele <b>te ensina e constrói junto</b> cada frente: site, landing page, tráfego, conteúdo, métricas, vendas. A IA é seu funcionário 24h; o DutyX diz a ela como trabalhar <b>no seu negócio, do seu jeito.</b></p>
+
+  <div class="toc">
+    <a href="#comecar">Como começar</a>
+    <a href="#sistema">Skills de sistema</a>
+    <a href="#frentes">As frentes</a>
+    <a href="#arsenal">Arsenal grátis</a>
+    <a href="#org">Organização</a>
+    <a href="#fluxo">Fluxo do dia a dia</a>
+    <a href="#regras">Regras de ouro</a>
+  </div>
+
+  <div class="law">
+    <b>A regra que torna o DutyX único: o QUÊ antes do COMO.</b><br>
+    O mercado só <i>executa</i>. O DutyX <b>ensina e depois executa</b> — antes de construir, ele te explica o conceito, confirma que você entendeu, e só então constrói. É isso que te torna dono, não refém. Por isso ele não deixa você pular essa parte.
+  </div>
+
+  <h2 id="comecar"><span class="n">01</span>Como começar</h2>
+  <p class="note">Uma vez na vida:</p>
+  <ol class="steps">
+    <li><b>Instalar o Claude Code</b> — conta Claude + Node + <code>npm install -g @anthropic-ai/claude-code</code>. Passo a passo no <code>README.md</code>.</li>
+    <li><b>Abrir a pasta do DutyX</b> no Claude Code (digita <code>claude</code>).</li>
+    <li>Digitar <span class="cmd"><span class="s">/</span>instalar</span> → entrevista rápida (5 min) → o sistema te conhece.</li>
+  </ol>
+  <p>Depois disso, todo dia que for trabalhar: <span class="cmd"><span class="s">/</span>abrir</span> — ele te dá o "bom dia" e diz o que fazer.</p>
+
+  <h2 id="sistema"><span class="n">02</span>As 6 skills de sistema</h2>
+  <table>
+    <tr><th>Comando</th><th>O que faz</th></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>instalar</span></td><td>Setup inicial: te entrevista, escolhe seu perfil (empresário ou vibecoder) e ensina o sistema a te conhecer.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>abrir</span></td><td>Começo de sessão: carrega seu contexto + histórico e diz o que dá pra atacar hoje.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>salvar</span></td><td>Backup no seu GitHub (histórico + segurança) e atualiza o diário.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>atualizar</span></td><td>Revisa e arruma sua memória quando algo mudou no negócio.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>configurar</span></td><td>Liga o arsenal grátis (conectores, Whisper, etc.) pro melhor resultado.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>aprender-video</span></td><td>Você joga um vídeo/técnica que achou por aí → o DutyX absorve a lógica e passa a aplicar. O sistema cresce com você.</td></tr>
+  </table>
+
+  <h2 id="frentes"><span class="n">03</span>As 9 frentes (o que dá pra construir)</h2>
+  <p class="note">Cada uma te ensina o conceito antes de construir, e sai na SUA marca.</p>
+
+  <h3>Construir presença</h3>
+  <table>
+    <tr><th>Comando</th><th>Entrega</th></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>landing-page</span></td><td>Página que converte, do zero — anatomia, copy, na sua marca.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>site-foda</span></td><td>O "site de US$10k": animação de agência (Framer Motion/GSAP) + componentes 21st.dev + 3D. 2 rotas: Rápida (HTML) e Pro (React/Next).</td></tr>
+  </table>
+
+  <h3>Aba social-media (hub de conteúdo)</h3>
+  <table>
+    <tr><th>Comando</th><th>Entrega</th></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>social-media</span></td><td>Ideias, linha editorial, legenda, hashtags — e o hub que liga as 3 abaixo.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>carrossel</span></td><td>Carrossel feito em código (jeito Claude nativo) → exporta PNG. Foto real só via gerador.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>metricas</span></td><td>Acha o SEU padrão de viral (seus campeões + transcrição) e pontua roteiros novos.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>roteiro-video</span></td><td>Roteiro de reel que prende nos 3s e converte.</td></tr>
+  </table>
+
+  <h3>Negócio</h3>
+  <table>
+    <tr><th>Comando</th><th>Entrega</th></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>trafego</span></td><td>Plano de tráfego (orgânico + pago): públicos por temperatura, criativo, e a métrica que importa (custo por resultado, não view).</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>planejamento</span></td><td>Plano de 90 dias: meta, gargalo, calendário de conteúdo e a prioridade da semana.</td></tr>
+    <tr><td><span class="cmd"><span class="s">/</span>vendas</span></td><td>Proposta, copy de venda, quebra de objeção e fechamento.</td></tr>
+  </table>
+
+  <h2 id="arsenal"><span class="n">04</span>O arsenal (turbo — tudo grátis)</h2>
+  <p>O DutyX funciona <b>sem nada</b> (modo básico). Pra ter o melhor resultado, ligue o arsenal com <span class="cmd"><span class="s">/</span>configurar</span> — montado pra rodar <b>só com ferramentas gratuitas</b>:</p>
+  <ul class="dash">
+    <li><b>Conectores nativos do Claude</b> (Conectores → Novo conector → login): <b>Windsor</b> (métricas, grátis) e <b>Meta</b> (anúncios).</li>
+    <li><b>Whisper local</b> (transcrição) — você baixa 1x no PC, grátis. É o que faz o <code>/aprender-video</code> e o <code>/metricas</code> transcreverem.</li>
+    <li><b>Imagem real</b>: Pollinations (sem cadastro) ou Gemini free.</li>
+    <li><b>Site de agência</b>: 21st.dev (copiar componente = grátis) + Framer Motion + skill <code>frontend-design</code>.</li>
+    <li><b>Pago = só opcional</b>: Higgsfield (imagem premium), 21st.dev Magic. Nunca necessário.</li>
+  </ul>
+
+  <h2 id="org"><span class="n">05</span>Como o sistema é organizado</h2>
+  <table>
+    <tr><th>Pasta / arquivo</th><th>O que é</th></tr>
+    <tr><td><code>COMECE-AQUI.md</code> · <code>COMO-FUNCIONA.html</code></td><td>Boas-vindas (a página abre no 1º contato).</td></tr>
+    <tr><td><code>CONCEITO.md</code></td><td>O manifesto (o quê→como).</td></tr>
+    <tr><td><code>CLAUDE.md</code></td><td>O cérebro (as regras do sistema).</td></tr>
+    <tr><td><code>_catalogo.md</code></td><td>Tudo que o DutyX faz.</td></tr>
+    <tr><td><code>_contexto/</code></td><td>A memória do SEU negócio (o <code>/instalar</code> preenche).</td></tr>
+    <tr><td><code>_aprenda/</code></td><td>As 9 lições "o quê" (valem como mini-aulas).</td></tr>
+    <tr><td><code>_blocos/</code></td><td>Modelos prontos que o sistema usa pra construir.</td></tr>
+    <tr><td><code>perfis/</code></td><td>Empresário / vibecoder.</td></tr>
+    <tr><td><code>setup/</code></td><td>Guias pra ligar o arsenal.</td></tr>
+    <tr><td><code>scripts/</code></td><td>Utilitários (ex: transcrever).</td></tr>
+    <tr><td><code>saidas/</code></td><td>Tudo que você criar.</td></tr>
+  </table>
+
+  <h2 id="fluxo"><span class="n">06</span>O fluxo do dia a dia</h2>
+  <ol class="steps">
+    <li><span class="cmd"><span class="s">/</span>abrir</span> → ele te diz onde parou e o que fazer.</li>
+    <li>Chama a <b>frente</b> que você quer (<code>/site-foda</code>, <code>/carrossel</code>, <code>/vendas</code>…).</li>
+    <li>Ele <b>ensina → confirma → constrói → aprende seu gosto.</b></li>
+    <li><span class="cmd"><span class="s">/</span>salvar</span> no fim.</li>
+  </ol>
+  <p class="note">Achou uma técnica nova num reel? <code>/aprender-video</code> e o sistema incorpora.</p>
+
+  <h2 id="regras"><span class="n">07</span>As regras de ouro (a alma do DutyX)</h2>
+  <ul class="dash">
+    <li><b>O quê antes do como</b> — você sempre entende antes de receber.</li>
+    <li><b>Ninguém trava</b> — se faltar uma ferramenta, ele faz no modo básico; nunca te deixa preso num erro.</li>
+    <li><b>Free-first</b> — o melhor resultado é de graça; pago é só extra.</li>
+    <li><b>Na sua marca</b> — tudo sai com a sua cara, não genérico.</li>
+    <li><b>Build-in-public</b> — é o sistema que o Lucas usa de verdade, crescendo à vista.</li>
+  </ul>
+
+  <div class="foot">
+    DutyX · construído em público por <b>Lucas Duty</b> · você não comprou um curso — instalou um sistema.<br>
+    Dica: pra salvar como PDF, abra no navegador e use <b>Ctrl/Cmd + P → Salvar como PDF</b>.
+  </div>
+
+</div>
+</body>
+</html>
