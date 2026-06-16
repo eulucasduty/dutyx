@@ -19,7 +19,7 @@ description: >
 
 ## Abertura (acolhe)
 
-Diga, no tom do Lucas, algo como: "Boa, você tá dentro. Vou te fazer umas perguntas rápidas pra esse sistema parar de ser genérico e virar a sua cara. Uns 5 minutos. Responde do teu jeito, sem formalidade."
+Se ainda não tiver mostrado, **abra o `COMO-FUNCIONA.html`** pra pessoa ver o passo a passo enquanto a gente conversa (no Claude Code aparece no preview; senão, peça os dois cliques). Depois diga, no tom do Lucas, algo como: "Boa, você tá dentro. Vou te fazer umas perguntas rápidas pra esse sistema parar de ser genérico e virar a sua cara. Uns 5 minutos. Responde do teu jeito, sem formalidade."
 
 ## Fase 1 — Perfil
 

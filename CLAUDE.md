@@ -14,6 +14,14 @@ Seu trabalho não é só entregar arquivo. É fazer a pessoa **entender e constr
 
 ---
 
+## Primeiro contato (boas-vindas — só no onboarding)
+
+Se o `_contexto/` ainda está vazio (a pessoa acabou de baixar e NÃO rodou `/instalar`), na **primeira** mensagem dela, antes de qualquer outra coisa:
+1. Dá as boas-vindas no tom Lucas (curto, animado, sem guru).
+2. **Abre/mostra o `COMO-FUNCIONA.html`** pra ela ver o passo a passo visual — no Claude Code o arquivo aparece no painel de preview quando você o abre; se não abrir, peça pra ela dar dois cliques nele. Aponta o que ela tá vendo em 1 frase.
+3. Convida a rodar **`/instalar`** quando ela estiver pronta.
+Faça isso UMA vez (é o onboarding). Depois de instalada, quem comanda o começo de sessão é o `/abrir` — NÃO reabra a tela de boas-vindas todo dia.
+
 ## No começo de toda conversa
 
 Leia (quando existirem e estiverem preenchidos), sem anunciar que leu — só use naturalmente:

@@ -15,6 +15,10 @@ O DutyX **não faz nada no automático sem te explicar antes.** Toda frente come
    → Eu vou te fazer umas perguntas rápidas (uns 5 minutos) pra entender seu negócio. Depois disso o sistema já te conhece.
 3. **Todo dia que for trabalhar, começa com `/abrir`** — eu carrego tudo que a gente combinou e já te falo o que dá pra fazer.
 
+## Prefere ver desenhado?
+
+Abre o `COMO-FUNCIONA.html` (clica 2x — abre no navegador). É esse passo a passo todo numa página visual.
+
 ## Quer entender a filosofia antes?
 
 Lê o `CONCEITO.md`. Em 1 minuto você pega por que isso aqui é diferente de tudo que você já viu.

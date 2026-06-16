@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DutyX — Como funciona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* === SISTEMA VISUAL DUTYX ===
+     bg #0A0A0B · panel #141417/#1C1C20 · line #2A2A30
+     ink #F4F4F5 · muted #A1A1AA · orange #FF7A18 · glow #FFB066
+     display: Space Grotesk · body: Manrope · mono: JetBrains Mono */
+  :root{
+    --bg:#0A0A0B; --panel:#141417; --panel2:#1C1C20; --line:#2A2A30;
+    --ink:#F4F4F5; --muted:#A1A1AA; --orange:#FF7A18; --glow:#FFB066;
+    --mono:'JetBrains Mono',monospace; --disp:'Space Grotesk',sans-serif; --body:'Manrope',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body);
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+    background-image:
+      radial-gradient(900px 480px at 82% -8%, rgba(255,122,24,.10), transparent 60%),
+      radial-gradient(700px 420px at 8% 108%, rgba(255,122,24,.06), transparent 55%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:56px 32px 40px}
+  .reveal{opacity:0; transform:translateY(16px); animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
+
+  /* ---- HERO ---- */
+  .brandrow{display:flex; align-items:center; gap:14px; margin-bottom:30px}
+  .logo{font-family:var(--disp); font-weight:700; font-size:30px; letter-spacing:-.02em; display:flex; align-items:center; gap:2px}
+  .logo b{color:var(--orange)}
+  .logo .x{color:var(--orange); position:relative}
+  .pill{font-family:var(--mono); font-size:11px; color:var(--orange); border:1px solid rgba(255,122,24,.35);
+    background:rgba(255,122,24,.07); padding:5px 10px; border-radius:999px; letter-spacing:.04em}
+  h1{font-family:var(--disp); font-weight:700; font-size:clamp(38px,5vw,62px); line-height:1.04; letter-spacing:-.025em; max-width:16ch}
+  h1 em{font-style:normal; color:var(--orange)}
+  .sub{color:var(--muted); font-size:clamp(16px,1.4vw,19px); max-width:54ch; margin-top:18px; font-weight:500}
+  .sub b{color:var(--ink); font-weight:700}
+
+  /* ---- STEPS ---- */
+  .steplabel{font-family:var(--mono); font-size:12px; letter-spacing:.18em; color:var(--muted); text-transform:uppercase; margin:54px 0 18px}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+  .step{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px 20px 20px; position:relative; overflow:hidden}
+  .step:before{content:""; position:absolute; left:0; top:0; height:3px; width:100%; background:linear-gradient(90deg,var(--orange),transparent 70%); opacity:.0; transition:.3s}
+  .step:hover:before{opacity:1}
+  .num{font-family:var(--disp); font-weight:700; font-size:15px; color:var(--orange); letter-spacing:.05em}
+  .cmd{font-family:var(--mono); font-size:13px; color:var(--ink); background:var(--panel2); border:1px solid var(--line);
+    padding:6px 11px; border-radius:8px; display:inline-block; margin:14px 0 12px}
+  .cmd .s{color:var(--orange)}
+  .step h3{font-family:var(--disp); font-weight:600; font-size:18px; letter-spacing:-.01em; margin-bottom:7px}
+  .step p{color:var(--muted); font-size:14.5px; font-weight:500}
+  .step .arrow{position:absolute; right:-9px; top:46%; color:var(--line); font-size:20px; z-index:2}
+  .steps .step:last-child .arrow{display:none}
+
+  /* ---- A LEI ---- */
+  .law{margin-top:30px; background:
+      linear-gradient(180deg, rgba(255,122,24,.07), rgba(255,122,24,.02)),
+      var(--panel);
+    border:1px solid rgba(255,122,24,.28); border-radius:20px; padding:38px 38px 34px}
+  .law .tag{font-family:var(--mono); font-size:12px; letter-spacing:.18em; color:var(--orange); text-transform:uppercase}
+  .law h2{font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.2vw,38px); letter-spacing:-.02em; margin:12px 0 26px}
+  .law h2 .o{color:var(--orange)}
+  .pair{display:grid; grid-template-columns:1fr auto 1fr; gap:22px; align-items:stretch}
+  .card{background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:22px}
+  .card .k{font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; margin-bottom:10px}
+  .card.q{border-color:rgba(255,122,24,.45)}
+  .card.q .k{color:var(--orange)}
+  .card h4{font-family:var(--disp); font-weight:600; font-size:21px; margin-bottom:8px}
+  .card p{color:var(--muted); font-size:15px; font-weight:500}
+  .mid{display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-weight:700; color:var(--orange); font-size:30px}
+  .kicker{margin-top:22px; font-size:16.5px; color:var(--ink); font-weight:600}
+  .kicker span{color:var(--muted); font-weight:500}
+
+  /* ---- FRENTES ---- */
+  .frentes{margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+  .frentes .lab{font-family:var(--mono); font-size:12px; letter-spacing:.16em; color:var(--muted); text-transform:uppercase; margin-right:6px}
+  .chip{font-family:var(--mono); font-size:13.5px; color:var(--ink); background:var(--panel); border:1px solid var(--line);
+    padding:8px 13px; border-radius:9px; transition:.2s}
+  .chip:hover{border-color:var(--orange); color:#fff}
+  .chip .s{color:var(--orange)}
+  .chip.star{border-color:rgba(255,122,24,.5); background:rgba(255,122,24,.06)}
+
+  /* ---- FOOTER ---- */
+  .foot{margin-top:40px; padding-top:24px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap}
+  .foot .quote{font-family:var(--disp); font-weight:500; font-size:18px; letter-spacing:-.01em; max-width:52ch; line-height:1.4}
+  .foot .quote b{color:var(--orange); font-weight:700}
+  .foot .sig{font-family:var(--mono); font-size:12px; color:var(--muted); white-space:nowrap}
+  .foot .sig b{color:var(--ink)}
+
+  @media (max-width:880px){
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .step .arrow{display:none}
+    .pair{grid-template-columns:1fr; gap:14px}
+    .mid{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandrow reveal" style="animation-delay:.02s">
+    <div class="logo">Duty<span class="x">X</span></div>
+    <span class="pill">comece por aqui · 2 min</span>
+  </div>
+
+  <h1 class="reveal" style="animation-delay:.08s">O sistema que te <em>ensina</em> e <em>constrói</em> com IA.</h1>
+  <p class="sub reveal" style="animation-delay:.16s">Você não decora comando nenhum. Você <b>conversa</b> — e o DutyX faz as frentes do seu negócio com você, te explicando cada parte antes. É o mesmo sistema que eu uso pra rodar o Lucas Duty.</p>
+
+  <div class="steplabel reveal" style="animation-delay:.22s">// o passo a passo</div>
+  <div class="steps">
+    <div class="step reveal" style="animation-delay:.26s">
+      <div class="num">01</div>
+      <div class="cmd">claude</div>
+      <h3>Abre no Claude Code</h3>
+      <p>Põe a pasta do DutyX no seu PC e abre ela. Pronto — o gênio acordou.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step reveal" style="animation-delay:.32s">
+      <div class="num">02</div>
+      <div class="cmd"><span class="s">/</span>instalar</div>
+      <h3>Conta quem você é</h3>
+      <p>Responde umas perguntas rápidas. Agora o sistema te conhece — tudo sai com a sua cara.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step reveal" style="animation-delay:.38s">
+      <div class="num">03</div>
+      <div class="cmd"><span class="s">/</span>abrir</div>
+      <h3>Começa o dia</h3>
+      <p>Todo dia que for trabalhar, manda isso. Ele lembra de tudo e te diz o que dá pra fazer.</p>
+      <div class="arrow">→</div>
+    </div>
+    <div class="step reveal" style="animation-delay:.44s">
+      <div class="num">04</div>
+      <div class="cmd"><span class="s">/</span>frente</div>
+      <h3>Escolhe o que construir</h3>
+      <p>Chama a frente que você quer. Ela te ensina e constrói junto com você.</p>
+    </div>
+  </div>
+
+  <div class="law reveal" style="animation-delay:.5s">
+    <div class="tag">a lei do dutyx</div>
+    <h2>Primeiro o <span class="o">quê</span>. Depois o <span class="o">como</span>.</h2>
+    <div class="pair">
+      <div class="card q">
+        <div class="k">1 · o quê</div>
+        <h4>Ele te ensina</h4>
+        <p>Antes de construir, te explica o conceito — o que faz aquilo ser bom de verdade. Em 2 minutos, sem enrolação.</p>
+      </div>
+      <div class="mid">→</div>
+      <div class="card">
+        <div class="k">2 · o como</div>
+        <h4>Aí ele constrói</h4>
+        <p>Com você entendendo cada parte, ele monta a coisa do seu jeito e na sua marca.</p>
+      </div>
+    </div>
+    <div class="kicker">É isso que te faz <b style="color:var(--ink)">dono</b>, não refém. <span>Por isso o DutyX não deixa você pular essa parte.</span></div>
+  </div>
+
+  <div class="frentes reveal" style="animation-delay:.56s">
+    <span class="lab">as frentes</span>
+    <span class="chip"><span class="s">/</span>landing-page</span>
+    <span class="chip star"><span class="s">/</span>site-foda · 3D</span>
+    <span class="chip"><span class="s">/</span>trafego</span>
+    <span class="chip"><span class="s">/</span>carrossel</span>
+    <span class="chip"><span class="s">/</span>roteiro-video</span>
+    <span class="chip"><span class="s">/</span>planejamento</span>
+    <span class="chip"><span class="s">/</span>vendas</span>
+  </div>
+
+  <div class="foot reveal" style="animation-delay:.62s">
+    <div class="quote">Você não comprou um curso. Você <b>instalou um sistema</b> — e aprende usando ele de verdade.</div>
+    <div class="sig">— <b>Lucas Duty</b> · construído em público</div>
+  </div>
+
+</div>
+</body>
+</html>
