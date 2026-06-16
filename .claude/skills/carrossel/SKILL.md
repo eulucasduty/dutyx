@@ -8,9 +8,15 @@ description: >
   "carrossel educativo". Para roteiro de vídeo/reel, use a frente /roteiro-video.
 ---
 
-# /carrossel — carrossel que para o scroll (frente DutyX)
+# /carrossel — carrossel que para o scroll (parte da aba /social-media)
 
-Segue a **Lei do DutyX**: ensina o QUÊ, confirma no PORTÃO, constrói o COMO, fecha aprendendo. Motor visual: a skill global `claude-design` (e geração de imagem quando precisar de fundo/ilustração). O visual e o tom são os **da marca do cliente** (lê `_contexto/marca.md`), nunca os do Lucas.
+Segue a **Lei do DutyX**: ensina o QUÊ, confirma no PORTÃO, constrói o COMO, fecha aprendendo. O visual e o tom são os **da marca do cliente** (lê `_contexto/marca.md`), nunca os do Lucas.
+
+## Como as imagens nascem — o jeito Claude nativo (importante)
+O Claude **não usa um "gerador de imagem" pra fazer o carrossel** — ele **desenha em código** (HTML/CSS), do mesmo jeito que cria qualquer visual. Isso te dá controle total: texto nítido, marca exata, layout no capricho — e exporta em PNG sem aquela cara de "imagem de IA". Então:
+- **Layout, texto e design dos slides = HTML/CSS** (motor `claude-design`), cada slide um quadro **1080×1350 (4:5)**.
+- **Geração de imagem (Gemini)** entra SÓ quando o slide precisa de uma **foto/ilustração de fundo** — nunca pro layout/texto.
+- **Virar PNG:** ver "O COMO" abaixo (caminho simples + turbo).
 
 ## Antes de tudo
 Leia `_contexto/negocio.md` (o que vende, pra quem), `_contexto/marca.md` (tom + visual) e `_contexto/estrategia.md` (objetivo atual, gargalo). É isso que faz o carrossel falar a língua do cliente.
@@ -37,9 +43,11 @@ Só siga pro como depois das respostas. Se a ideia central ainda estiver vaga ("
 3. Capriche no **slide 1** — gere 3 opções de capa/hook e deixe a pessoa escolher. É onde mora 80% do resultado.
 4. Para cada slide, entregue: **(a)** o texto que vai na tela (curto), **(b)** a sugestão visual (cor de fundo da marca, imagem/ícone, layout), **(c)** uma nota de design se precisar.
 5. Escreva também a **legenda do post** (1ª linha que prende + corpo que aprofunda + CTA + 3-5 hashtags do nicho dela).
-6. Se a marca pedir visual de alta fidelidade, use `claude-design` pra montar os slides em HTML/4:5 com as cores/fontes do cliente; gere imagem de fundo/ilustração quando o conceito pedir. Se a pessoa estiver "no zero" de marca, use um default elegante e avise.
-7. Salve em `saidas/carrosseis/<tema>-<data>/` (copy em `slides.md`, e os visuais quando gerados).
-8. Ofereça conferir o resultado (screenshot dos slides) e ajustar.
+6. **Monte os slides em HTML/CSS** (jeito Claude nativo) com `claude-design` — um arquivo `carrossel.html` com cada slide num quadro 1080×1350, nas cores/fontes do cliente (`_blocos/carrossel/estrutura.md`). Gere foto/ilustração de fundo (Gemini) só quando o slide pedir. "No zero" de marca → default elegante, e avise.
+7. **Exporte pra PNG:**
+   - **Caminho simples (qualquer um):** abre o `carrossel.html` no navegador e tira print de cada slide (ou usa a função de exportar/print). Funciona sem instalar nada.
+   - **Turbo (se tiver Node/Playwright — ver `/configurar`):** roda o render que transforma cada slide do HTML em PNG automático.
+8. Salve em `saidas/carrosseis/<tema>-<data>/` (`carrossel.html` + `slides.md` com a copy + os PNGs quando exportados). Ofereça conferir e ajustar.
 
 ## 4. O FECHO (aprende)
 Pergunte o que ela achou — principalmente da capa. Se ela ajustar algo de tom/visual/CTA que pareça valer pra sempre ("meu CTA é sempre comentar X", "não gosto de fundo escuro"), ofereça salvar em `_contexto/marca.md`. Anote no `_contexto/historico.md` o que foi feito e o tema.

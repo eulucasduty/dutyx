@@ -49,7 +49,8 @@ Eu vou te fazer umas perguntas rápidas (uns 5 minutos) sobre seu negócio, seu 
 ## Daí pra frente, o ritmo é esse
 
 - **Começou a trabalhar?** Manda `/abrir` — eu carrego seu contexto e já te falo o que dá pra fazer hoje.
-- **Quer construir algo?** Chama a frente: `/landing-page`, `/site-foda`, `/trafego`, `/carrossel`, `/roteiro-video`, `/planejamento`, `/vendas`.
+- **Quer construir algo?** Chama a frente: `/landing-page`, `/site-foda`, `/trafego`, `/social-media` (carrossel, métricas, conteúdo), `/roteiro-video`, `/planejamento`, `/vendas`.
+- **Quer o melhor resultado?** `/configurar` liga o arsenal (Whisper, Windsor, Meta…) — opcional, modo turbo. O básico funciona sem nada.
 - **Quer guardar tudo num lugar seguro?** Manda `/salvar` (faz backup no seu GitHub).
 - **Sumiu uma informação ou mudou algo?** Manda `/atualizar` — eu reviso e arrumo a memória.
 

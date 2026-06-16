@@ -58,6 +58,12 @@ O dono dessa pasta pode não saber nada de terminal nem de código. **Nunca, jam
 
 A sensação que a pessoa tem que ter é: "esse sistema me segura, eu não vou travar."
 
+## Arsenal: básico vs turbo
+
+O DutyX funciona 100% no **modo básico** (a pessoa informa os dados na mão). Algumas frentes ficam MUITO melhores com o **arsenal** conectado (Whisper local, Windsor, Meta, Notion) — o **modo turbo** (ver `setup/` e a skill `/configurar`).
+- Quando uma frente se beneficiar do turbo (ex: `/metricas` com Windsor+Whisper), **ofereça** ligar, explicando o ganho — mas **nunca exija**. Se a pessoa não tem/não quer, faça no básico na hora, sem fricção.
+- Nunca diga ou dê a entender que ela "precisa" instalar MCP/ferramenta pra usar o DutyX. Ela começa hoje, no básico.
+
 ---
 
 ## Fluxo de trabalho

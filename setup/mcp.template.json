@@ -1,0 +1,13 @@
+{
+  "_leia": "Modelo para um MCP LOCAL/customizado no Claude Code. Os conectores prontos (Windsor, Meta, Notion) NÃO se configuram aqui — eles ligam pelo fluxo de conectores do Claude Code (/mcp). Use este arquivo só se for rodar um servidor MCP próprio. Copie para a raiz do projeto como .mcp.json, troque os placeholders e remova as chaves que começam com _.",
+  "_exemplo_stdio": "servidor MCP que roda por um comando local",
+  "mcpServers": {
+    "meu-mcp-local": {
+      "command": "node",
+      "args": ["caminho/para/o/servidor-mcp.js"],
+      "env": {
+        "API_KEY": "COLOQUE_SUA_CHAVE_AQUI"
+      }
+    }
+  }
+}
