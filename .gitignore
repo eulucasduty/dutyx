@@ -16,3 +16,13 @@ saidas/*
 # Logo do cliente (cada um coloca o seu)
 _contexto/logo.png
 _contexto/logo.svg
+
+# 🔒 SEGURANÇA — NUNCA versionar chaves/segredos
+.mcp.json
+.env
+.env.*
+*.key
+*.pem
+*.token
+**/secrets*
+.claude/settings.local.json

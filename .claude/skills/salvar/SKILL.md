@@ -26,5 +26,9 @@ Guarda tudo num lugar seguro e versionado, pra pessoa nunca perder o trabalho e 
 4. Confirme com o link do repositório: "Salvo. Tá tudo guardado aqui: <link>."
 5. Se der conflito ou erro, **não despeje o erro cru** — traduza e resolva junto, passo a passo.
 
+## Segurança ao salvar (não pule)
+- **Repo PRIVADO por padrão.** Na primeira vez, crie privado. O `_contexto/` tem dados do negócio da pessoa — não vão pra repo público sem ela saber.
+- **Antes do commit, cheque que não há chave/segredo** no que vai subir (chave de API, token, senha). Se aparecer algo assim, **não commite** — oriente a tirar pra `.mcp.json`/`.env` (que estão no `.gitignore`). Ver `SEGURANCA.md`.
+
 ## Sempre
 Depois de salvar, anexe 1-2 linhas em `_contexto/historico.md` (o que foi salvo, data) pra manter a continuidade do `/abrir`.
