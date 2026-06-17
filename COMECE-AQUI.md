@@ -8,12 +8,14 @@ Não é curso. Não é PDF que você lê e esquece. É um **sistema vivo** que m
 
 O DutyX **não faz nada no automático sem te explicar antes.** Toda frente começa te ensinando o **que** é aquilo bem feito, e só depois mostra o **como**. Parece que demora mais? Demora 2 minutos. Mas você sai sabendo — e quem sabe não depende de ninguém. **Não pula essa parte.** É ela que te transforma de "pessoa que paga pra fazer" em "pessoa que manda fazer e entende".
 
-## Seus 3 passos agora
+## Seus passos agora
 
-1. **Instalou o Claude Code?** Se não, abre o `README.md` aqui do lado — eu te levo do zero, é mais fácil que instalar um joguinho.
-2. **Abre essa pasta no Claude Code** e digita: **`/instalar`**
-   → Eu vou te fazer umas perguntas rápidas (uns 5 minutos) pra entender seu negócio. Depois disso o sistema já te conhece.
-3. **Todo dia que for trabalhar, começa com `/abrir`** — eu carrego tudo que a gente combinou e já te falo o que dá pra fazer.
+Se você tá lendo isso, **o DutyX já tá baixado na sua pasta** (você pediu pro Claude clonar, ou rodou o `git clone`). Então:
+
+1. **Digita `/instalar`** → eu te faço umas perguntas rápidas (uns 5 min) pra entender seu negócio. Depois disso o sistema já te conhece.
+2. **Todo dia que for trabalhar, começa com `/abrir`** — eu carrego tudo que a gente combinou e já te falo o que dá pra fazer.
+
+> Ainda não baixou e caiu aqui de outro jeito? Sem problema — o `README.md` tem o passo a passo de instalação (você pede pro Claude clonar o DutyX, é uma linha só).
 
 ## Prefere ver desenhado?
 
