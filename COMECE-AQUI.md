@@ -17,7 +17,7 @@ O DutyX **não faz nada no automático sem te explicar antes.** Toda frente come
 
 ## Prefere ver desenhado?
 
-Abre o `COMO-FUNCIONA.html` (clica 2x — abre no navegador). É esse passo a passo todo numa página visual.
+Abre o `GUIA.html` (clica 2x — abre no navegador). É o guia completo do DutyX numa página visual: o que ele faz, as skills e como usar.
 
 ## Quer entender a filosofia antes?
 
