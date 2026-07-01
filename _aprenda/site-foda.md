@@ -1,56 +1,62 @@
 # 📚 O QUÊ — Site foda: motion, 3D e aquele efeito que prende o olho
 
-> Esse é o nível premium. Aquele site que você vê e pensa "como é que faz isso?". A boa notícia: tem regra por trás. A má: a maioria erra e faz um site lindo que ninguém aguenta usar. Lê isso antes de construir — é o que separa "uau" de "pesado e confuso".
+> Aquele site que você vê e pensa "como é que faz isso?". Tem regra por trás. Lê antes de construir — é o que separa "site de agência" de "template com cara de IA". (Escrito a partir do 1º site real do DutyX: na primeira tentativa saiu com PUTA cara de IA e sem nada de 3D. Aqui está tudo que faltou pra acertar de primeira.)
 
-## Primeiro: o que faz um site ser FODA (e não só "cheio de efeito")
+## Primeiro: o que faz um site ser FODA
+Não é ter MAIS animação. É movimento **com intenção** pra contar história e guiar o olho:
+1. **Movimento com propósito** — cada animação revela algo, mostra relação ou dá feedback.
+2. **Storytelling no scroll** — a página se conta enquanto rola: coisas entram, pinam, transformam, reagem.
+3. **Hierarquia e respiro** — tipografia grande e confiante, contraste, espaço. Menos elementos, melhor feitos.
+4. **3D no ponto certo** — objeto que reage ao mouse/scroll dá o "uau" — quando serve.
 
-Site foda **não é** o que tem mais animação. É o que usa movimento **com intenção** pra contar uma história e guiar o olho. Os princípios:
-
-1. **Movimento com propósito.** Cada animação tem que ter um motivo: revelar algo, mostrar relação entre coisas, dar feedback. Animação aleatória cansa e distrai.
-2. **Storytelling no scroll.** O site premium se conta enquanto a pessoa rola — elementos entram, transformam, reagem. A rolagem vira uma narrativa, não só "descer a página".
-3. **Hierarquia e respiro.** Espaço em branco (ou preto) generoso, tipografia grande e confiante, contraste forte. Menos elementos, melhor feitos.
-4. **3D no ponto certo.** Um objeto 3D que a pessoa pode girar, ou que reage ao mouse/scroll, dá o "uau" — MAS só quando serve ao produto (mostrar o produto, criar atmosfera). 3D enfiado à força só deixa lento.
+## 🚫 Os 7 pecados que dão "cara de IA" (evite por PADRÃO)
+Foi exatamente isso que estragou a primeira versão. O DutyX **não faz** nada disso:
+1. **Grade (grid) de fundo repetida em toda seção** — o tell nº1 de "gerado por IA". Proibido por padrão.
+2. **Bordas finas repetidas + cards genéricos** (borda 1px arredondada com listrinha) — cara de shadcn cru.
+3. **Dark + mono tímido e ESTÁTICO** — sem movimento nem ousadia tipográfica = parece rascunho.
+4. **Roxo/azul/gradiente arco-íris** — cor "default de componente". Tudo vai pra paleta da MARCA.
+5. **GERAR componente do zero** em vez de usar os famosos prontos — sai sem alma.
+6. **Zero storytelling no scroll** — a página só "desce". Nada pina, nada revela, nada reage.
+7. **Matar os efeitos com `prefers-reduced-motion`** — ERRO GRAVE: puseram `@media (prefers-reduced-motion:reduce){animation:none}` no efeito-assinatura e, como o cliente tinha "reduzir movimento" ligado no Windows, **o site ficou preto e parado**. Aqui a animação É o produto: ela renderiza SEMPRE (ver regra abaixo).
 
 ## A tecnologia por trás (você não programa, mas entende pra pedir certo)
+- **GSAP + ScrollTrigger** — a base da animação premium: liga o efeito ao scroll (pin, scrub, parallax, scroll horizontal). É o que faz os sites "awwwards".
+- **Lenis** — scroll suave/com inércia. É o **truque nº1 do "feel de agência"** — sem ele, o scroll é seco.
+- **Spline / Three.js** — 3D na página. Spline resolve 90% (monta visual, embeda).
+- **Componentes famosos (21st.dev)** — blocos prontos e lindos que você **rebrandeia** (nunca gera do zero).
 
-- **GSAP** = a biblioteca rei de animação na web. Faz elementos se moverem com suavidade profissional. O pedaço mais importante dela é o **ScrollTrigger**: liga a animação ao scroll (a pessoa rola, a cena acontece). É isso que faz os sites "awwwards".
-- **Spline** ou **Three.js** = o que coloca **3D** na página. Spline é mais fácil (você monta o 3D numa ferramenta visual e embeda); Three.js é mais poderoso e mais pesado. Pra começar, Spline resolve 90% dos casos.
-- **HTML/CSS/JS** = o esqueleto, a roupa e o comportamento (ver a lição de `_aprenda/landing-page.md`). O motion é uma camada POR CIMA de uma base bem feita — sem base boa, motion não salva.
+## Scrollytelling (a página que se conta rolando)
+Combina **Lenis** (scroll suave) + **GSAP ScrollTrigger**. Receitas que funcionam:
+- **Seção pinada com scroll horizontal** (trava e desliza pro lado enquanto você rola pra baixo).
+- **Parallax** no herói (fundo/elemento em velocidade diferente).
+- **Reveals em camadas** (coisas entram em sequência).
+- Número/título que se move num ritmo próprio.
 
-## A pilha do "site de US$10k" (as 4 camadas)
-O que separa um "site de IA" genérico de um "site de agência" **não é sorte — é a configuração que você dá ao Claude ANTES de mandar construir.** São 4 camadas:
-1. **Claude Code** — o desenvolvedor: lê o projeto inteiro, edita vários arquivos, roda comandos, itera.
-2. **Animação (Framer Motion ou GSAP)** — o que dá vida: fade no scroll, revelações escalonadas, hover suave. É *isso* que faz parecer agência, não IA.
-3. **Skill de design (gosto)** — ensina taste ao Claude: escala tipográfica, grade de 8px, tokens de cor, hierarquia — e a **evitar a "estética genérica de IA"**. Sem ela, sai um Tailwind padrão sem alma.
-4. **Componentes prontos (21st.dev)** — blocos profissionais (hero, pricing, navbar, depoimentos) que você adapta à sua marca, pulando ~80% do trabalho.
+## 3D DE VERDADE — os 2 caminhos (o DutyX ensina os dois)
+- **Caminho A — 3D interativo ao vivo (Spline):** monta a cena em `spline.design` (grátis), exporta o `.splinecode`, embeda com `@splinetool/react-spline`. Reage ao mouse. (Ex.: um robô que segue o cursor.)
+- **Caminho B — 3D no SCROLL (vídeo → frames → canvas):** a técnica estilo **Apple** (o AirPod girando quando você rola). NÃO é vídeo tocando: é uma sequência de imagens desenhada num `<canvas>`, e **o frame exibido é amarrado ao scroll**. Você pega um render/vídeo do produto girando → divide em ~120-180 frames com `ffmpeg` → o ScrollTrigger (`scrub`) mapeia o progresso do scroll no índice do frame. Rolar = girar o 3D. (Esqueleto e comando no `_blocos/site-foda/motion-presets.md`.)
 
-> A regra de ouro: **o Claude Code é tão bom quanto o ambiente, as animações, o gosto de design e os componentes que você dá a ele.** A configuração vem ANTES do prompt. Agência cobra R$10–30k e leva 6–12 semanas por isso; com a pilha certa, são dias.
+## Fundos animados interativos (cada seção com um efeito diferente)
+- Herói: **vortex de partículas** (canvas) que reage ao mouse — leve e "vivo".
+- Seções: **Aurora / Beams / Meteors / Gradient Mesh** (CSS, leves). Um efeito DIFERENTE por seção pra não repetir.
 
-## ⚠️ Performance: o assassino silencioso (a regra mais importante daqui)
+## Camadas com intenção (profundidade premium)
+Empilhamento: **fundo animado (z-0) < 3D/objeto (z-meio) < texto (z-topo).** O 3D como **backdrop fixo interativo** da página (atrás das letras, reagindo ao mouse — precisa liberar `pointer-events` pro mouse "atravessar" o conteúdo até ele).
 
-Um site lindo que demora 8 segundos pra abrir no celular **converte menos** que um site simples e rápido. A maioria das pessoas vai abrir no 4G, num celular mediano. Então:
-- 3D pesado = veneno no mobile. Use leve, otimizado, ou só no desktop.
-- Toda imagem otimizada; nada de arquivo gigante.
-- Animação que trava (engasga) é pior que nenhuma. Tem que rodar liso (o segredo técnico: animar as propriedades certas — transform e opacity — não o resto).
-- **Teste no celular sempre.** O que é lindo no seu notebook pode ser injogável no telefone do cliente.
+## ⚠️ Performance é rei (a regra que mais importa)
+Site lindo e lento **converte menos**. A maioria abre no 4G, celular mediano:
+- 3D/sequência de frames pesados = veneno no mobile. Otimize (jpg/webp ~1600px, comprimido, pré-carregado); no mobile use menos frames ou versão estática.
+- Anime só **transform** e **opacity** (roda liso). Anima layout (width/top/margin) = engasga.
+- Use **1** efeito forte (pin/scrub/3D-scroll) por página. Teste no celular sempre.
 
-## Quando 3D/motion AJUDA e quando ATRAPALHA
+## 🔒 Regra anti-reduced-motion (não repita o erro)
+O **efeito-assinatura** (fundo animado, 3D, hero) **anima SEMPRE** — nunca envolva ele num `@media (prefers-reduced-motion:reduce){animation:none}`. Respeite `reduced-motion` só em **micro-animações não-essenciais** (um hover, um fade), nunca no efeito que É o produto.
 
-| Ajuda | Atrapalha |
-|---|---|
-| Mostrar um produto por todos os ângulos | 3D decorativo que não diz nada e pesa |
-| Revelar conteúdo conforme a pessoa rola | Tudo se mexendo ao mesmo tempo (epilepsia visual) |
-| Dar atmosfera premium a uma marca que pede isso | Marca simples/local que só precisa converter rápido |
-| Um detalhe que reage ao mouse (delícia sutil) | Animação que atrasa a pessoa de ver a oferta |
-
-## Os erros que arruínam um site foda
-
-- Priorizar o efeito antes da mensagem (a pessoa achou bonito mas não entendeu o que você vende).
-- Animação demais — vira parque de diversão, cansa.
-- Esquecer o mobile e o tempo de carregamento.
-- 3D pesado sem necessidade.
-- Não ter CTA claro no meio de tanto efeito.
+## Legibilidade sobre fundo animado
+Texto branco sobre robô/partículas fica meio ilegível. Solução leve (não escurece nada): halo de sombra herdado no conteúdo —
+```css
+main { text-shadow: 0 1px 2px rgba(0,0,0,.6), 0 2px 20px rgba(0,0,0,.5); }
+```
 
 ## A pergunta-chave antes de construir
-
-**O efeito que eu quero serve pra contar minha história e vender — ou é só pra eu me achar foda?** Se serve, bora. Se é só vaidade, corta. O melhor motion é o que a pessoa nem percebe que é motion: ela só sente que o site é "premium" e entende tudo.
+**O efeito serve pra contar minha história e vender — ou é só vaidade?** Se serve, bora. O melhor motion é o que a pessoa nem percebe: ela só sente "premium" e entende tudo.

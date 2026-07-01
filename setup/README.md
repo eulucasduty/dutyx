@@ -30,7 +30,8 @@ Funciona assim pra **Windsor, Meta, Higgsfield, Notion, Algrow** e companhia. De
 - `whisper-local.md` — transcrição grátis no seu PC (precisa baixar 1x)
 - `instagram-metricas.md` — métricas (Windsor conector OU Insights manual)
 - `imagens.md` — geradores de imagem grátis (carrossel com foto real)
-- `componentes-21st.md` — site de agência: 21st.dev (componentes) + Framer Motion (animação) + frontend-design
+- `componentes-21st.md` — site de agência: Magic MCP (21st.dev) + Framer Motion + Lenis + Spline
+- `deploy.md` — pôr o site no ar (Vercel + domínio/Cloudflare)
 - `windsor.md` · `meta-ads.md` · `notion.md` — conectores
 - `mcp.template.json` — só pra MCP local/customizado (a maioria NÃO precisa disso)
 

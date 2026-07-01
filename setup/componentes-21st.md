@@ -1,28 +1,40 @@
-# 🧩 Componentes prontos (21st.dev) + animação (Framer Motion)
+# 🧩 Componentes famosos (21st.dev / Magic MCP) + animação
 
-Pra Rota Pro do `/site-foda` (o "site de US$10k"). Tudo aqui tem caminho **grátis**.
+Pra Rota Pro do `/site-foda` (o "site de US$10k"). O jeito FODA de verdade usa os **componentes famosos** do 21st.dev — rebrandeados pra sua marca.
 
-## 21st.dev — blocos profissionais (hero, pricing, navbar, depoimentos…)
+## O jeito certo: Magic MCP → tool `inspiration` (NÃO `builder`)
+O **Magic MCP do 21st.dev** dá acesso à biblioteca de componentes famosos direto no Claude Code.
+- Use a tool **`inspiration`** → busca os componentes EXISTENTES/famosos (Shiny Button, Aurora, Beams, Bento Grid, Marquee, Container Scroll, Spline…). Lista curada em `_blocos/site-foda/componentes-famosos.md`.
+- **NÃO use o `builder`** → ele gera do zero (no nosso teste voltou como `[object Object]`, inútil e sem alma).
+- **SEMPRE rebrandeia:** o famoso vem roxo/azul → troca pra preto/branco/laranja (ou a paleta da marca), fonte e logo da marca. Nunca cola cru.
 
-### Jeito grátis pra todo mundo (recomendado — é o que o guia ensina)
-1. Acesse o site **21st.dev** e navegue pelos componentes.
-2. **Copie o código** do componente que curtir.
-3. Cole no Claude Code e peça: *"integra esse componente do 21st.dev na minha landing, adapta aos meus design tokens, troca o placeholder pelo meu texto e adiciona as animações de entrada do Framer Motion."*
-Custo: **zero**. Sem chave, sem instalação.
+## Ligar o Magic MCP (precisa de API key — uma vez)
+1. Pegue a key em **21st.dev/magic** (freemium — tem tier grátis, depois pago).
+2. Adicione (rode VOCÊ, não cole a key no chat — vaza em log):
+   ```
+   claude mcp add magic --scope user --env API_KEY="SUA_KEY" -- npx -y @21st-dev/magic@latest
+   ```
+3. **⚠️ REINICIE o Claude Code** — MCP só carrega na inicialização.
+> É um MCP LOCAL (roda com chave), não o "Conectores → Novo conector". A chave fica no seu ambiente, nunca num arquivo versionado (`.mcp.json` está no `.gitignore`).
 
-### Opcional — 21st.dev "Magic" (gera com `/ui`)
-É um MCP que gera componente direto no editor ("v0 dentro do Claude Code") com `/ui`. Tem **tier grátis** (créditos limitados/mês; em beta), depois é pago. Precisa de uma **chave** do 21st.dev (é um MCP local — usa o modelo `mcp.template.json`, não o login de conector). Vale só se você for gerar muito componente. **Não é necessário** — o copy-paste grátis resolve.
+## Sem o Magic MCP (modo básico, grátis)
+Funciona: acesse **21st.dev** no navegador, **copie o código** do componente e cole no Claude Code pedindo *"integra esse componente, adapta aos meus design tokens e troca o placeholder pelo meu texto"*. Só dá um pouco mais de trabalho.
 
-## Framer Motion — as animações de agência (Rota Pro / React)
-Pacote open-source (grátis) pra animação em projetos React/Next:
+## Animação (instalar no projeto React/Next)
 ```
-npm install framer-motion
+npm install framer-motion lenis gsap
 ```
-Depois, peça ao Claude: *"use Framer Motion em todas as animações — fade no scroll, revelações escalonadas (stagger) e transições suaves no hover."*
-(Na Rota Rápida, em HTML puro, o equivalente é o **GSAP** — não precisa instalar projeto React.)
+- **Framer Motion** — reveals/hover/transições.
+- **Lenis** — scroll suave (o "feel de agência" — não pule).
+- **GSAP** (+ ScrollTrigger) — pin, scrub, parallax, scroll horizontal, e o 3D-no-scroll.
+(Na Rota Rápida em HTML puro, GSAP sozinho já resolve — sem precisar de projeto React.)
+
+## 3D
+- **Spline** (`spline.design`, grátis, sem key): monta a cena, exporta `.splinecode`, embeda com `@splinetool/react-spline`.
+- **ffmpeg** (grátis): pra fatiar vídeo em frames no 3D-no-scroll (ver `_blocos/site-foda/motion-presets.md`).
 
 ## Skill de design (o gosto)
-O DutyX já traz o sistema de design em `_blocos/site-foda/design-tokens.md`. Pra reforçar, dá pra usar a skill pública **`frontend-design`** (gosto de design profissional, anti-"cara de IA"). O `/site-foda` já referencia isso.
+Sistema de design em `_blocos/site-foda/design-tokens.md` + a skill pública **`frontend-design`** como motor de taste.
 
 ## Regra de ouro
-Nada disso é obrigatório: a Rota Rápida (HTML + GSAP) faz site bonito sem instalar nada. Esta pilha é pra quem quer o acabamento "de agência". E nunca trave a pessoa — se algo não instalar, volte pro caminho simples.
+Nada é obrigatório: a Rota Rápida (HTML + GSAP) faz site bonito sem instalar nada. O Magic MCP é o que destrava o "de agência". Se algo não instalar, **não trave** — volte pro básico.

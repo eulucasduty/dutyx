@@ -1,36 +1,60 @@
-# Bloco — presets de motion (GSAP/ScrollTrigger)
+# Bloco — presets de motion (scrollytelling, 3D, fundos)
 
-> Receitas de movimento que funcionam e rodam liso. Brand-neutral. Regra de ouro: anime **transform** (x, y, scale, rotate) e **opacity** — nunca propriedades que forçam recálculo de layout (width, top, margin). É isso que faz a animação não engasgar.
+> Receitas que rodam liso. Regra de ouro: anime **transform** (x, y, scale, rotate) e **opacity** — nunca width/top/margin (engasga). E o **efeito-assinatura anima SEMPRE** (não desligar no reduced-motion).
 
-## Presets que resolvem 90% dos casos
+## A pilha do movimento
+- **Lenis** (`npm install lenis`) — scroll suave/inércia. É o **truque nº1 do "feel de agência"**. Liga primeiro.
+- **GSAP + ScrollTrigger** — pin, scrub, parallax, scroll horizontal.
+- **Framer Motion** (Rota Pro/React) — reveals/hover/transições declarativas.
 
-1. **Reveal no scroll** — elemento entra suave (de baixo + fade) quando aparece na tela.
-   - GSAP + ScrollTrigger: `from { y: 40, opacity: 0 }` disparado quando o bloco entra na viewport.
-   - Uso: títulos de seção, cards, blocos de prova. O efeito "o site se conta enquanto eu rolo".
+## Presets base (resolvem 90%)
+1. **Reveal no scroll** — entra de baixo + fade quando aparece. (`from { y:40, opacity:0 }`). Títulos, cards, prova.
+2. **Stagger** — vários itens em sequência rápida. Listas, features, depoimentos.
+3. **Parallax sutil** — fundo/elemento em velocidade diferente do scroll. Herói. (sutil!)
+4. **Pin + scrub** — a seção "trava" e a cena evolui conforme rola. Processo em passos, produto girando. **1 por página.**
+5. **Scroll horizontal pinado** — a seção trava e desliza pro lado enquanto você rola pra baixo. Portfólio, etapas.
+6. **Hover delicado** — botão/card reage ao mouse (leve scale + sombra). No mobile não existe hover — garanta funcionar sem ele.
 
-2. **Stagger** — vários itens entram em sequência rápida (um atrasado do outro).
-   - Uso: lista de features, galeria, depoimentos. Dá ritmo sem cansar.
+## 🎞️ Preset "3D no SCROLL" (vídeo → frames → canvas) — estilo Apple
+O efeito do produto girando conforme você rola. Não é vídeo tocando: é sequência de imagens num `<canvas>`, com o frame amarrado ao scroll.
+1. Tenha um render/vídeo do objeto girando (Spline, Blender, AE, ou vídeo de produto).
+2. Fatie em frames com ffmpeg (grátis):
+   ```
+   ffmpeg -i render.mp4 -vf "fps=30,scale=1600:-1" frames/frame_%04d.jpg
+   ```
+   (~120-180 frames pra um giro suave)
+3. No site, esqueleto:
+   ```tsx
+   const FRAME_COUNT = 147;
+   const frameUrl = (i) => `/frames/frame_${String(i).padStart(4,"0")}.jpg`;
+   // 1) preload TODAS as imagens (array images[])
+   // 2) pin a seção com ScrollTrigger
+   // 3) const obj = { f: 0 };
+   //    gsap.to(obj, { f: FRAME_COUNT-1, ease:"none",
+   //      scrollTrigger:{ trigger:sec, start:"top top", end:"+=3000", scrub:true, pin:true },
+   //      onUpdate: () => draw(Math.round(obj.f)) });
+   // 4) function draw(i){ ctx.drawImage(images[i], 0,0, canvas.width, canvas.height) }
+   ```
+- **Performance:** frames jpg/webp ~1600px comprimidos, pré-carregados; no mobile menos frames ou versão estática. Sequência pesada mata o 4G.
 
-3. **Parallax sutil** — fundo/elemento se move mais devagar que o scroll.
-   - Uso: hero, imagens grandes. SUTIL — exagero embrulha o estômago.
+## 🧊 Preset "backdrop 3D fixo interativo" (Spline)
+O 3D como fundo da página inteira, atrás do texto, reagindo ao mouse:
+- Camadas (z-index): **fundo animado (0) < 3D/Spline (meio) < texto (topo).**
+- O container do Spline fica `position:fixed` cobrindo a viewport.
+- **Libere `pointer-events`** no conteúdo por cima (`pointer-events:none` nos wrappers de texto que não são clicáveis) pra o mouse "atravessar" e o 3D reagir. Botões/links mantêm `pointer-events:auto`.
+- Embed: `@splinetool/react-spline` com o `.splinecode` exportado do spline.design (grátis).
 
-4. **Pin + scrub (storytelling)** — uma seção "trava" e a cena evolui conforme a pessoa rola.
-   - Uso: explicar um processo em passos, mostrar um produto girando. É o efeito "awwwards". Usar com parcimônia (1 por página).
+## 🎇 Fundos animados interativos (um por seção, pra não repetir)
+- Herói: **vortex de partículas** (canvas 2D) que reage ao mouse — leve e vivo.
+- Seções: **Aurora / Background Beams / Meteors / Gradient Mesh** (CSS/leves).
+- Muitos vêm prontos como componentes famosos do 21st.dev (ver `componentes-famosos.md`) — rebrandeie pra paleta da marca.
 
-5. **Hover delicado** — botão/card reage ao mouse (leve scale + sombra).
-   - Uso: CTAs e cards. Dá sensação premium e responsiva. No mobile não existe hover — garanta que funciona sem ele.
+## Regra anti-reduced-motion (não repita o erro que apagou o site 3x)
+- O **efeito-assinatura** (fundo/3D/hero) **NUNCA** vai dentro de `@media (prefers-reduced-motion:reduce){ animation:none }`.
+- Respeite reduced-motion só em micro-animações não-essenciais.
 
 ## Performance (não-negociável)
-- Carregue a biblioteca de animação de forma que não trave a primeira dobra.
-- `prefers-reduced-motion`: respeite quem pediu menos animação no sistema (acessibilidade + não enjoar).
-- Teste no celular. Se travar, simplifique — rápido > bonito.
-
-## 3D (quando entrar)
-- Spline: monte a cena na ferramenta, embede leve, e carregue depois do conteúdo principal.
-- Three.js: só se precisar de controle fino; cuide do peso.
-- No mobile: considere uma versão estática (imagem) no lugar do 3D pesado.
+- Carregue a lib sem travar a 1ª dobra. 1 efeito forte (pin/scrub/3D) por página. Teste no celular.
 
 ## Referências de técnica (puxar via find-skills, adaptar — nunca copiar marca de terceiro)
-- `eng0ai/eng0-template-skills@gsap-awwwards-website`
-- `secondsky/claude-skills@motion`
-- `github/awesome-copilot@gsap-framer-scroll-animation`
+- `eng0ai/eng0-template-skills@gsap-awwwards-website` · `secondsky/claude-skills@motion` · `github/awesome-copilot@gsap-framer-scroll-animation`
