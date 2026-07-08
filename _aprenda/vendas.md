@@ -43,9 +43,9 @@ Toda venda trava num desses três. Decora:
    Tradução: ou não é prioridade, ou tem medo de dar trabalho. Mostre o custo de adiar ("cada mês que passa é mais cliente perdido") e mostre que o trabalho é seu, não dele ("você não precisa fazer nada, eu cuido"). Tempo é quase sempre dor disfarçada — diagnostique de novo.
 
 3. **Confiança — "como eu sei que vai funcionar?".**
-   A mais honesta das três. Quebra com prova (resultado de outro cliente, print, número, antes/depois) ou com garantia que tira o risco do colo dele ("se não rolar X, você não paga / eu refaço"). Sem prova nem garantia, é só promessa — e promessa não fecha.
+   A mais honesta das três. Quebra com prova (resultado de outro cliente, print, número, antes/depois) ou com garantia que tira o risco do colo dele ("se não rolar X, você não paga / eu refaço"). Sem prova nem garantia, é só promessa — e promessa não fecha. Por isso prova social se coleta de propósito, não por acaso: todo elogio espontâneo vira pedido de depoimento na hora (script pronto em `_blocos/vendas/follow-up.md`).
 
-Regra de ouro: objeção não é "não". É "ainda não me convenci". Trata como pergunta, não como parede.
+Regra de ouro: objeção não é "não". É "ainda não me convenci". Trata como pergunta, não como parede. E na vida real elas vêm fantasiadas: "vou pensar", "depois te chamo", "tenho que falar com meu sócio/marido", "já tentei e não deu certo" — cada uma dessas tem princípio e resposta modelo prontos no banco `_blocos/vendas/objecoes.md`. Mais uma regra: **duas tentativas de quebra, no máximo.** Na terceira você vira o vendedor chato e queima a relação.
 
 ## Fechamento com escassez HONESTA
 
@@ -58,7 +58,7 @@ Escassez acelera a decisão — MAS só funciona se for verdade. "Tenho 2 vagas 
 - **Falar de você, não do cliente.** "Eu faço, eu entrego, meu método" o tempo todo. Ninguém compra o seu currículo — compram a vida deles melhor. Vira tudo pro "você".
 - **Jogar o preço sem ancorar.** Soltar o número antes de plantar o valor. Aí qualquer preço vira "caro".
 - **Vender tarefa em vez de resultado.** Listar entregáveis técnicos em vez do que muda na vida da pessoa.
-- **Sumir no follow-up.** A maioria das vendas fecha do 2º contato pra frente — e a maioria dos vendedores manda UMA mensagem e desiste. Quem não some, fecha. Follow-up não é encher o saco; é lembrar com motivo ("vi que você ainda não respondeu, ficou alguma dúvida sobre X?").
+- **Sumir no follow-up.** A maioria das vendas fecha do 2º contato pra frente — e a maioria dos vendedores manda UMA mensagem e desiste. Quem não some, fecha. Follow-up não é encher o saco; é lembrar **com motivo** — a cadência que funciona é d+1 (chegou? dúvida?), d+3 (um valor novo: resultado, dado, resposta) e d+7 (prazo real + facilitar o "não"), e depois PARA. Modelos prontos em `_blocos/vendas/follow-up.md`. Se a conversa rola no WhatsApp, quem conduz etapa por etapa é a frente `/whatsapp`.
 - **Tratar objeção como rejeição.** Levar o "tá caro" pro pessoal e desistir, quando era só pedido de mais contexto.
 
 ## A pergunta que importa

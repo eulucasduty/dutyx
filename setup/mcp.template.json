@@ -1,12 +1,18 @@
 {
-  "_leia": "Modelo para um MCP LOCAL/customizado. Os conectores prontos (Windsor, Meta, Higgsfield, Notion) NAO se configuram aqui — eles ligam em Conectores -> Novo conector -> fazer login, nativo do Claude. Use este arquivo so se for rodar um servidor MCP proprio. Copie para a raiz como .mcp.json, troque os placeholders e remova as chaves que comecam com _. SEGURANCA: o .mcp.json preenchido pode conter chave — NUNCA commite (ja esta no .gitignore).",
-  "_exemplo_stdio": "servidor MCP que roda por um comando local",
   "mcpServers": {
     "meu-mcp-local": {
+      "type": "stdio",
       "command": "node",
       "args": ["caminho/para/o/servidor-mcp.js"],
       "env": {
         "API_KEY": "COLOQUE_SUA_CHAVE_AQUI"
+      }
+    },
+    "meu-mcp-remoto": {
+      "type": "http",
+      "url": "https://exemplo.com/mcp",
+      "headers": {
+        "Authorization": "Bearer COLOQUE_SUA_CHAVE_AQUI"
       }
     }
   }

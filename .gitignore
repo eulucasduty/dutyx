@@ -9,13 +9,10 @@ node_modules/
 .claude/sessions/
 .claude/.cache/
 
-# Outputs do cliente — ficam no computador dele, não vão pro repo público
-saidas/*
-!saidas/.gitkeep
-
-# Logo do cliente (cada um coloca o seu)
-_contexto/logo.png
-_contexto/logo.svg
+# ⚠️ De propósito, saidas/ e o seu logo VÃO pro backup:
+# seu repositório é PRIVADO (o /salvar cria assim) e o backup existe
+# justamente pra guardar o SEU trabalho. Se um dia você tornar o repo
+# público, tire saidas/ e o logo antes de publicar.
 
 # 🔒 SEGURANÇA — NUNCA versionar chaves/segredos
 .mcp.json
@@ -26,3 +23,14 @@ _contexto/logo.svg
 *.token
 **/secrets*
 .claude/settings.local.json
+
+# Mídia pesada (não vai pro backup — o GitHub trava arquivo acima de 100 MB)
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.wav
+*.mp3
+*.m4a
+setup/whisper/

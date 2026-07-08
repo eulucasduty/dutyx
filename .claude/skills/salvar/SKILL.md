@@ -1,34 +1,65 @@
 ---
 name: salvar
 description: >
-  Faz backup do trabalho no GitHub (git add + commit + push) e atualiza o histórico. Na primeira vez,
-  ajuda a conectar/criar o repositório. Use quando a pessoa disser "salvar", "fazer backup",
-  "guardar", "subir pro GitHub", ou ao fim de uma sessão importante.
+  Faz backup do trabalho no GitHub da pessoa (git add + commit + push) e atualiza o histórico.
+  Na primeira vez, checa git, identidade e remote, e cria/aponta um repositório PRIVADO dela.
+  Use quando a pessoa disser "salvar", "fazer backup", "guardar", "subir pro GitHub",
+  ou quando o /fechar oferecer o backup.
 ---
 
 # /salvar — backup e versão
 
-Guarda tudo num lugar seguro e versionado, pra pessoa nunca perder o trabalho e poder voltar no tempo. Lembre: a pessoa pode ser leiga — conduza com humildade técnica, nunca a deixe presa num erro.
+Guarda tudo num "save game" na nuvem, pra pessoa nunca perder o trabalho e poder voltar no tempo. Ela pode ser leiga: **um estado de cada vez, traduzindo cada erro, nunca a deixando presa.**
 
-## Primeira vez (ainda não tem git/repo)
+**O que ENTRA no backup:** tudo, incluindo `saidas/` (é o trabalho dela — o repo é PRIVADO, então pode e DEVE ir). **O que fica de fora:** chaves e segredos (`.env`, `.mcp.json` etc. — o `.gitignore` já cuida).
 
-1. Cheque se a pasta já é um repositório: `git rev-parse --is-inside-work-tree`.
-2. Se não for, explique em uma frase o que é (um "save game" do seu projeto na nuvem) e ofereça dois caminhos:
-   - **Criar um repositório novo e privado** (recomendado pra começar) — guie pelo GitHub CLI (`gh`) se a pessoa tiver, ou pelo passo a passo no site do GitHub.
-   - **Conectar a um repositório que ela já tem.**
-3. Faça o primeiro commit junto com ela, explicando cada passo em português de gente.
+## A máquina de estados (siga NA ORDEM — cheque cada estado antes de avançar)
 
-## Próximas vezes
+### Estado 1 — git instalado?
+Rode `git --version`. Se der "não reconhecido"/"command not found":
+- **Windows:** `winget install --id Git.Git -e` no PowerShell (ou baixar em git-scm.com, next-next-next). Depois **fechar e reabrir o terminal**.
+- **Mac:** `xcode-select --install` (ou git-scm.com).
+Explique em 1 frase ("git é o programa que tira as fotos do seu projeto") e confira de novo antes de seguir.
 
-1. Veja o que mudou (`git status`).
-2. Pergunte em uma linha o que foi feito (ou resuma você mesmo a partir do histórico) pra virar a mensagem do commit.
-3. Rode `git add . && git commit -m "<resumo>" && git push`.
-4. Confirme com o link do repositório: "Salvo. Tá tudo guardado aqui: <link>."
-5. Se der conflito ou erro, **não despeje o erro cru** — traduza e resolva junto, passo a passo.
+### Estado 2 — identidade configurada?
+Rode `git config --get user.name` e `git config --get user.email`. Se algum vier vazio, pergunte nome e email (o mesmo do GitHub, se tiver) e rode:
+`git config --global user.name "Nome"` e `git config --global user.email "email@exemplo.com"`.
 
-## Segurança ao salvar (não pule)
-- **Repo PRIVADO por padrão.** Na primeira vez, crie privado. O `_contexto/` tem dados do negócio da pessoa — não vão pra repo público sem ela saber.
-- **Antes do commit, cheque que não há chave/segredo** no que vai subir (chave de API, token, senha). Se aparecer algo assim, **não commite** — oriente a tirar pra `.mcp.json`/`.env` (que estão no `.gitignore`). Ver `SEGURANCA.md`.
+### Estado 3 — pra onde aponta o remote?
+Rode `git remote -v` e decida:
+- **origin contém `eulucasduty/dutyx`** → é o repo do Lucas, de onde ela baixou. Ela NÃO consegue subir pra lá (e nem deve). Vá pro Estado 4 usando `git remote set-url`.
+- **Não existe origin** → vá pro Estado 4 usando `git remote add`.
+- **origin já é um repo DELA** → pule direto pro Estado 5.
 
-## Sempre
-Depois de salvar, anexe 1-2 linhas em `_contexto/historico.md` (o que foi salvo, data) pra manter a continuidade do `/abrir`.
+### Estado 4 — criar/apontar o repo PRIVADO da pessoa
+Explique em 1 frase: "vou criar um cofre privado seu no GitHub — só você vê."
+- **Se tiver o `gh`** (`gh --version` responde): confira o login com `gh auth status` (se não estiver logado: `gh auth login`, opção navegador). Depois: `gh repo create meu-dutyx --private` e aponte: `git remote set-url origin https://github.com/USUARIO/meu-dutyx.git` (ou `git remote add origin ...` se não havia origin).
+- **Se NÃO tiver o `gh`:** guie no site — github.com → botão **New** (repositório novo) → nome `meu-dutyx` → marcar **Private** → **NÃO** marcar "Add a README" → Create. Aí rode o mesmo `set-url`/`add` acima com a URL que o GitHub mostrar.
+- **Sem conta GitHub?** Criar é grátis: github.com/signup (2 min). Espere ela terminar e retome daqui.
+- **Não quer criar conta agora?** De boa: faça só o Estado 5 (commit local) e pule o push — "o save fica guardado no seu PC; quando quiser a cópia na nuvem, a gente liga o GitHub em 2 minutos." Nunca termine sem pelo menos o commit local e o histórico atualizado.
+
+### Estado 5 — commit
+1. `git status` pra ver o que mudou. **Bata o olho: se aparecer chave/token/senha em algo que vai subir, NÃO commite** — mova pra `.env`/`.mcp.json` (já ignorados) e avise (ver `SEGURANCA.md`).
+2. Pergunte em 1 linha o que foi feito (ou resuma você mesmo) → vira a mensagem.
+3. `git add .` e `git commit -m "resumo curto"`.
+
+### Estado 6 — push
+Primeira vez (ou se der erro de upstream): `git push -u origin main` (confira o nome do branch com `git branch --show-current` — pode ser `master`). Das próximas: `git push`. Confirme com o link: "Salvo. Tá guardado aqui: https://github.com/USUARIO/meu-dutyx".
+
+## Erros comuns (e como desenrolar)
+
+| Sintoma | Ação |
+|---|---|
+| "git não é reconhecido" / "command not found" | git não instalado (ou terminal aberto antes da instalação) → Estado 1; feche e reabra o terminal |
+| "Please tell me who you are" | identidade vazia → Estado 2 (`git config --global user.name/email`) |
+| "no upstream branch" | primeiro push sem destino → `git push -u origin main` (ou `master`) |
+| Abriu uma janela pedindo login | é o Git Credential Manager, é NORMAL → loga com a conta do GitHub no navegador, uma vez só |
+| "permission denied" / "403" ao dar push | origin aponta pro repo do Lucas ou de outra pessoa → Estado 3/4 (`git remote set-url origin <repo dela>`) |
+| "rejected (fetch first)" | o repo na nuvem tem algo que a pasta não tem → `git pull origin main --rebase`, depois `git push` de novo |
+| "repository not found" | URL errada ou repo não criado → confira a URL no GitHub e refaça o `set-url` |
+| Não tem conta no GitHub | criar grátis em github.com/signup e voltar pro Estado 4 |
+
+Nunca despeje o erro cru na pessoa: traduza, resolva junto, confirme que passou.
+
+## Sempre, no fim
+Anexe uma entrada datada em `_contexto/historico.md` (formato `### AAAA-MM-DD — título` + 1-2 linhas: o que foi salvo). É o que mantém a continuidade do `/abrir`.

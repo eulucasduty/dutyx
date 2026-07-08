@@ -4,6 +4,7 @@
 
 ## Tom de voz
 - **Como eu escrevo:** _(derivado de um exemplo real seu — legenda, email, etc.)_
+- **Bordões/expressões que eu uso:** _(frases que você repete — ex: "bora", "papo reto")_
 - **O que me dá ranço:** _(o que evitar — ex: "alavancar", emoji em email formal, jargão de guru)_
 - **Estilo geral:** _(síntese)_
 

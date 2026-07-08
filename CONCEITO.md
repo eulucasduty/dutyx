@@ -4,7 +4,7 @@
 
 A maioria das pessoas usa IA como uma máquina de pedir coisa: "me faz uma landing page", "escreve um anúncio". Recebe o resultado, não entende nada, e na próxima vez tá perdida de novo. Vira refém.
 
-O **DutyX** vira essa lógica do avesso. Ele é o **sistema operacional do seu negócio com IA** — você instala ele na sua pasta, conta pra ele quem você é uma vez, e a partir daí ele trabalha **com** você em cada frente: tráfego, landing page, site, carrossel, roteiro de vídeo, planejamento, vendas. A IA vira seu funcionário que trabalha 24h; o DutyX é o que diz pra ela **como** trabalhar no SEU negócio, do SEU jeito.
+O **DutyX** vira essa lógica do avesso. Ele é o **sistema operacional do seu negócio com IA** — você instala ele na sua pasta, conta pra ele quem você é uma vez, e a partir daí ele trabalha **com** você em cada frente: oferta, tráfego, landing page, site, carrossel, roteiro de vídeo, WhatsApp, planejamento, vendas. A IA vira seu funcionário que trabalha 24h; o DutyX é o que diz pra ela **como** trabalhar no SEU negócio, do SEU jeito.
 
 ## A lei do DutyX: o **quê** antes do **como**
 
@@ -20,8 +20,9 @@ Isso não é firula. É o que te dá liberdade. Quem entende o **quê** consegue
 
 1. **Você instala** (`/instalar`): conta pro sistema seu negócio, seu tom, seu foco. Ele guarda isso e usa em tudo.
 2. **Toda sessão você abre** (`/abrir`): ele lembra de tudo e te diz o que dá pra atacar hoje.
-3. **Você escolhe uma frente** (ex: `/landing-page`, `/trafego`, `/carrossel`): ele te ensina o conceito, confirma que entendeu, e constrói com você.
-4. **Ele aprende com você**: cada correção sua vira memória. Quanto mais você usa, mais o DutyX fica com a sua cara.
+3. **Você escolhe uma frente** (ex: `/oferta`, `/landing-page`, `/trafego`, `/carrossel`): ele te ensina o conceito, confirma que entendeu, e constrói com você.
+4. **Quando termina, você fecha** (`/fechar`): ele registra onde parou — é o que faz o `/abrir` de amanhã saber de hoje.
+5. **Ele aprende com você**: cada correção sua vira memória. Quanto mais você usa, mais o DutyX fica com a sua cara.
 
 ## Por que confiar nisso
 
