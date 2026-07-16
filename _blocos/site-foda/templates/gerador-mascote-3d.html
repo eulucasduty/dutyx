@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gerador de Mascote 3D — DutyX /site-foda</title>
+<!-- Fonte usada na placa do peito (troque pela fonte da marca, se quiser) -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@900&display=swap" rel="stylesheet" />
+<style>
+  html,body{margin:0;height:100%;background:#0A0A0B;overflow:hidden}
+  #wrap{position:fixed;inset:0;display:grid;place-items:center}
+  canvas{display:block;height:96vh;width:auto;max-width:96vw;margin:auto}
+  #hud{position:fixed;left:10px;top:10px;font:12px ui-monospace,monospace;color:#eee;z-index:10;background:#141417;padding:6px 10px;border:1px solid #2A2A30;border-radius:8px}
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div id="hud">mascote: <span id="st">carregando…</span></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+/* ================== CONFIG — edite AQUI pra marca do cliente ==================
+   O mascote-exemplo é um robô (cabeça + torso + visor + antena). Ele é feito só
+   de primitivas — troque medidas/peças à vontade. O que importa é manter:
+   - window.DXR.bake(N, w, h, q) → devolve N frames webp transparentes
+   - setFrame(t): o ROTEIRO da animação (t vai de 0 a 1 com o scroll)          */
+const CONFIG = {
+  placa: 'DUTYX',            // texto gravado no peito (vazio '' = sem placa)
+  corAcento: 0xD97757,       // acentos (LED da antena, anéis) — cor da marca
+  corEmissiva: 0xF2F5FA,     // brilho do visor/núcleo (branco = P&B premium)
+  corMetal: 0x46464f,        // metal do corpo
+  corMetalEscuro: 0x2c2c33,  // metal das juntas
+};
+/* =============================================================================== */
+
+const wrap = document.getElementById('wrap');
+let W = 900, H = 1120; // proporção retrato (busto)
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.06;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const canvas = renderer.domElement;
+wrap.appendChild(canvas);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(32, W / H, 0.1, 100);
+camera.position.set(0, 0.0, 5.15);
+camera.lookAt(0, -0.05, 0);
+
+// Ambiente pra reflexo no metal
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+// ---- Materiais ----
+const matBody  = new THREE.MeshStandardMaterial({ color: CONFIG.corMetal, metalness: 1.0, roughness: 0.29, envMapIntensity: 1.5 });
+const matDark  = new THREE.MeshStandardMaterial({ color: CONFIG.corMetalEscuro, metalness: 1.0, roughness: 0.4, envMapIntensity: 1.15 });
+const matGlass = new THREE.MeshStandardMaterial({ color: 0x0b0b0d, metalness: 0.6, roughness: 0.08, envMapIntensity: 1.2 });
+const matVisor = new THREE.MeshStandardMaterial({ color: 0x1a0d02, emissive: CONFIG.corEmissiva, emissiveIntensity: 0, metalness: 0.4, roughness: 0.25 });
+const matCore  = new THREE.MeshStandardMaterial({ color: 0x2a1400, emissive: CONFIG.corEmissiva, emissiveIntensity: 0, metalness: 0.3, roughness: 0.3 });
+const matRing  = new THREE.MeshStandardMaterial({ color: 0x1a0d06, emissive: CONFIG.corAcento, emissiveIntensity: 0, metalness: 0.5, roughness: 0.3 });
+const matTip   = new THREE.MeshStandardMaterial({ color: 0x3a1c0e, emissive: CONFIG.corAcento, emissiveIntensity: 0, metalness: 0.3, roughness: 0.3 });
+
+const robot = new THREE.Group();
+robot.scale.setScalar(0.92);
+scene.add(robot);
+
+// ---- Torso ----
+const torso = new THREE.Mesh(new RoundedBoxGeometry(1.85, 1.0, 0.85, 6, 0.26), matBody);
+torso.position.set(0, -1.15, 0); torso.castShadow = true; robot.add(torso);
+const collar = new THREE.Mesh(new RoundedBoxGeometry(1.2, 0.34, 0.7, 5, 0.14), matDark);
+collar.position.set(0, -0.62, 0.05); robot.add(collar);
+
+// núcleo no peito + anel
+const core = new THREE.Mesh(new THREE.SphereGeometry(0.17, 32, 32), matCore);
+core.position.set(0, -1.05, 0.46); robot.add(core);
+const coreRing = new THREE.Mesh(new THREE.TorusGeometry(0.26, 0.03, 16, 48), matRing);
+coreRing.position.copy(core.position); robot.add(coreRing);
+const coreLight = new THREE.PointLight(CONFIG.corEmissiva, 0, 4, 2);
+coreLight.position.set(0, -1.05, 0.7); robot.add(coreLight);
+
+// placa com o nome da marca no peito
+const labelCanvas = document.createElement('canvas');
+labelCanvas.width = 1024; labelCanvas.height = 256;
+const labelTex = new THREE.CanvasTexture(labelCanvas);
+labelTex.anisotropy = 8; labelTex.colorSpace = THREE.SRGBColorSpace;
+function drawLabel() {
+  const g = labelCanvas.getContext('2d');
+  g.clearRect(0, 0, 1024, 256);
+  if (!CONFIG.placa) { labelTex.needsUpdate = true; return; }
+  g.font = '900 172px Archivo, "Arial Black", sans-serif';
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.fillStyle = '#F5F5F6';
+  g.fillText(CONFIG.placa, 512, 138);
+  labelTex.needsUpdate = true;
+}
+drawLabel();
+const label = new THREE.Mesh(
+  new THREE.PlaneGeometry(0.72, 0.18),
+  new THREE.MeshBasicMaterial({ map: labelTex, transparent: true, opacity: 0.94 })
+);
+label.position.set(0, -1.38, 0.442); robot.add(label);
+
+// ---- Pescoço + cabeça ----
+const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.38, 0.34, 24), matDark);
+neck.position.set(0, -0.5, 0); robot.add(neck);
+
+const head = new THREE.Group();
+head.position.set(0, 0.15, 0);
+robot.add(head);
+
+const skull = new THREE.Mesh(new RoundedBoxGeometry(1.2, 1.28, 1.08, 6, 0.3), matBody);
+skull.castShadow = true; head.add(skull);
+const facePlate = new THREE.Mesh(new RoundedBoxGeometry(0.94, 0.86, 0.16, 5, 0.22), matGlass);
+facePlate.position.set(0, 0.02, 0.52); head.add(facePlate);
+
+// visor (o "olho") + linha de leitura
+const visor = new THREE.Mesh(new RoundedBoxGeometry(0.66, 0.11, 0.06, 4, 0.05), matVisor);
+visor.position.set(0, 0.08, 0.605); head.add(visor);
+const readout = new THREE.Mesh(new RoundedBoxGeometry(0.4, 0.035, 0.04, 3, 0.017), matVisor);
+readout.position.set(0, -0.14, 0.6); head.add(readout);
+
+// orelhas
+function earPod(x) {
+  const g = new THREE.Group();
+  const cyl = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.26, 32), matDark);
+  cyl.rotation.z = Math.PI / 2; g.add(cyl);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.028, 16, 40), matRing);
+  ring.position.set(x > 0 ? 0.14 : -0.14, 0, 0);
+  ring.rotation.y = Math.PI / 2; g.add(ring);
+  g.position.set(x, 0.02, 0);
+  return g;
+}
+head.add(earPod(0.64));
+head.add(earPod(-0.64));
+
+// antena com LED
+const antenna = new THREE.Group();
+const stalk = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.028, 0.5, 12), matDark);
+stalk.position.y = 0.9; antenna.add(stalk);
+const tip = new THREE.Mesh(new THREE.SphereGeometry(0.06, 20, 20), matTip);
+tip.position.y = 1.16; antenna.add(tip);
+antenna.rotation.z = 0.05;
+head.add(antenna);
+
+const brow = new THREE.Mesh(new RoundedBoxGeometry(0.9, 0.06, 0.05, 3, 0.025), matDark);
+brow.position.set(0, 0.3, 0.55); head.add(brow);
+
+// ---- Luzes (rim light forte = objeto escuro NÃO some em fundo escuro) ----
+scene.add(new THREE.HemisphereLight(0x8894a8, 0x0a0a0c, 0.6));
+const key = new THREE.DirectionalLight(0xffffff, 2.9);
+key.position.set(3.5, 4.5, 5); key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024); scene.add(key);
+const rim = new THREE.DirectionalLight(0xeaf1fb, 5.2);
+rim.position.set(-4.5, 2.2, -3.2); scene.add(rim);
+const rim2 = new THREE.DirectionalLight(0xffffff, 3.0);
+rim2.position.set(4.4, 0.4, -2.8); scene.add(rim2);
+const rim3 = new THREE.DirectionalLight(0xdfe8f5, 2.2);
+rim3.position.set(0, 3.5, -3.0); scene.add(rim3);
+const frontFill = new THREE.DirectionalLight(0xdce6ff, 1.05);
+frontFill.position.set(-1.5, 0.5, 6); scene.add(frontFill);
+
+// ---- O ROTEIRO (t = 0..1, amarrado ao scroll na LP) ----
+function smoothstep(a, b, x) { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+
+function setFrame(t) {
+  // Beat 1 (0→0.13): BOOT de frente. Beat 2 (0.14→1): giro de 360° voltando pra frente.
+  const boot = smoothstep(0.0, 0.13, t);
+  const rotT = smoothstep(0.14, 1.0, t);
+  const yaw = rotT * Math.PI * 2;
+
+  robot.rotation.y = yaw;
+  robot.rotation.x = Math.sin(rotT * Math.PI * 2) * 0.05;
+  robot.position.y = 0.12 + Math.sin(t * Math.PI * 2) * 0.045;
+  head.rotation.x = -0.02 + Math.sin(rotT * Math.PI * 2 + 0.5) * 0.04;
+  // dormindo: cabeça baixa; acordando: levanta
+  head.rotation.x += (1 - boot) * 0.14;
+
+  // LED da antena pisca ANTES do visor acordar (luz de standby)
+  const tipBlink = t < 0.045 ? (Math.sin(t * 320.0) > 0 ? 1 : 0.05) : 1;
+  matTip.emissiveIntensity = Math.max(smoothstep(0.0, 0.02, t) * 2.6 * tipBlink, boot * 3.2);
+
+  // visor: flicker digital quantizado no boot, depois sólido
+  const flick = t < 0.125 ? (Math.sin(t * 210.0) > -0.25 ? 1 : 0.18) : 1.0;
+  matVisor.emissiveIntensity = boot * 3.0 * flick;
+
+  // barra de leitura "carrega" da esquerda pra direita
+  const loadP = Math.min(1, Math.max(0.001, (t - 0.025) / 0.10));
+  readout.scale.x = loadP;
+  readout.position.x = -0.2 * (1 - loadP);
+
+  matCore.emissiveIntensity = boot * 3.4;
+  matRing.emissiveIntensity = boot * 2.2;
+  coreLight.intensity = boot * 2.6;
+}
+
+setFrame(0);
+
+// API exposta pro bake
+window.DXR = { renderer, scene, camera, canvas, setFrame,
+  setSize(w, h) { W = w; H = h; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); },
+  render(t) { setFrame(t); renderer.render(scene, camera); },
+};
+
+// preview ao vivo (ajuste previewT pra inspecionar um beat específico)
+let previewT = 0.09, paused = false;
+function loop() { if (!paused) window.DXR.render(previewT); requestAnimationFrame(loop); }
+loop();
+
+// Bake: pausa o preview, renderiza N frames e devolve array de dataURLs webp.
+// Espera as fontes carregarem (a placa do peito usa fonte web).
+window.DXR.bake = async function (N, w, h, q) {
+  await document.fonts.ready;
+  await document.fonts.load('900 172px Archivo').catch(() => {});
+  drawLabel();
+  paused = true;
+  window.DXR.setSize(w, h);
+  const out = [];
+  for (let i = 0; i < N; i++) {
+    setFrame(i / (N - 1));
+    renderer.render(scene, camera);
+    out.push(canvas.toDataURL('image/webp', q || 0.85));
+  }
+  paused = false;
+  return out;
+};
+
+document.getElementById('st').textContent = 'pronto — DXR.bake(72, 640, 800) pra assar';
+window.__ready = true;
+</script>
+</body>
+</html>

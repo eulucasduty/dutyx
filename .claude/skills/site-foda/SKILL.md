@@ -17,7 +17,7 @@ Segue a **Lei**: ensina o QUÊ, confirma no PORTÃO, constrói o COMO, fecha apr
 
 ## As 2 rotas (a pessoa escolhe no PORTÃO — explique assim)
 - **Rota Rápida (CSS puro, zero instalação):** um HTML único com os efeitos de `_blocos/site-foda/efeitos-css-puro.md` (gradiente vivo, grain, reveal, marquee, tilt, cursor). Fica no ar HOJE, leve por natureza. Pra quem quer "site bonito que impressiona" sem esperar.
-- **Rota Completa (GSAP + ScrollTrigger + Lenis, e 3D se servir):** scrollytelling, pin/scrub, 3D no scroll ou Spline. Mais "awwwards", mais horas. React/Next só se o projeto pedir — GSAP roda em HTML único via CDN.
+- **Rota Completa (GSAP + ScrollTrigger + Lenis, e 3D se servir):** scrollytelling, pin/scrub, 3D no scroll ou Spline. Mais "awwwards", mais horas. React/Next só se o projeto pedir — GSAP roda em HTML único via CDN. **Quer o pacote inteiro "LP de produto premium" (objeto 3D que dá boot e gira no scroll, conteúdo que sobe junto, seções coloridas, backgrounds por IA)? A receita ponta-a-ponta validada está em `_blocos/site-foda/lp-3d-scrollytelling.md` — com templates de código prontos em `_blocos/site-foda/templates/`.**
 - Dá pra começar na Rápida e evoluir pra Completa depois — nada se perde.
 
 ## Antes de tudo
@@ -39,7 +39,7 @@ Se a pessoa pedir pra pular ("só faz"), aplique a regra dos 30 segundos do CLAU
 3. **Rota Rápida:** monte com `claude-design` + receitas de `efeitos-css-puro.md` (máx. 3 efeitos + temperos). Pule pro passo 7.
 4. **Rota Completa — motion:** GSAP + ScrollTrigger + **Lenis** com os presets CORRETOS de `_blocos/site-foda/motion-presets.md` (integração Lenis↔ScrollTrigger, `matchMedia` pra mobile/reduced-motion). Componentes famosos: turbo via Magic `inspiration` (nunca `builder`), sempre reescritos nos tokens (`componentes-famosos.md`).
 5. **Fundos animados** — um efeito por seção, recolorido pra marca.
-6. **3D (se servir)** — Spline ao vivo com **lazy + fallback estático**, OU vídeo→frames no scroll (budget: ≤ 6 MB, desktop; mobile ganha versão leve). 1 efeito 3D forte por página.
+6. **3D (se servir)** — três vias, 1 efeito 3D forte por página: **(a)** Spline ao vivo com **lazy + fallback estático**; **(b)** vídeo→frames no scroll (budget: ≤ 6 MB, desktop; mobile ganha versão leve); **(c)** **mascote/produto 3D procedural** — SEM Blender/After: Three.js monta o objeto com primitivas e o navegador mesmo "assa" 60-72 frames webp transparentes (≤ 1,5 MB, roda liso em qualquer celular). Receita + gerador prontos: `_blocos/site-foda/lp-3d-scrollytelling.md`.
 7. **Legibilidade** — texto sobre fundo animado leva halo de `text-shadow` (ver lição).
 8. **Performance (regra, não etapa):** primeira carga ≤ 2 MB, LCP < 2,5s, só transform/opacity, teste com throttle "Fast 4G" + CPU 4x no DevTools. Pesou? Corta efeito, não o prazo.
 9. **Reduced-motion:** conteúdo NUNCA nasce invisível no CSS; com "reduzir movimento" ligado o site mostra a **versão calma** — completo e bonito, nunca preto/vazio (regra nº0 do motion-presets).
