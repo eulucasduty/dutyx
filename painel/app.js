@@ -1,4 +1,4 @@
-// app.js — a lógica do Painel DutyX. Vanilla JS, zero dependência.
+﻿// app.js — a lógica do Painel DutyX. Vanilla JS, zero dependência.
 // O painel NÃO fala com IA: ele lê/escreve os arquivos que o Claude Code usa.
 
 'use strict';
@@ -119,9 +119,9 @@ async function carregarFrentes(forcar = false) {
 }
 
 function pillDe(item, st) {
-  if (st === 'conectado' || st === 'manual-ok') return '<span class="pill ok">✅ conectado</span>';
-  if (item.custo === 'pago') return '<span class="pill pago">💰 opcional pago</span>';
-  return `<span class="pill falta">❌ ${item.opcional ? 'opcional' : 'faltando'}</span>`;
+  if (st === 'conectado' || st === 'manual-ok') return '<span class="pill ok">● conectado</span>';
+  if (item.custo === 'pago') return '<span class="pill pago">◆ opcional pago</span>';
+  return `<span class="pill falta">○ ${item.opcional ? 'opcional' : 'faltando'}</span>`;
 }
 
 // ---------- seção: HOJE ----------
@@ -135,26 +135,27 @@ async function renderHoje() {
       <div class="mini">onde paramos</div>
       <h3>${esc(e.titulo)}</h3>
       <p class="soft" style="font-size:13.5px; white-space:pre-line">${esc(e.corpo)}</p>
-      ${e.proximoPasso ? `<p style="margin-top:10px"><span class="laranja">➜ próximo passo:</span> ${esc(e.proximoPasso)}</p>` : ''}
+      ${e.proximoPasso ? `<p style="margin-top:10px"><span class="laranja">→ próximo passo:</span> ${esc(e.proximoPasso)}</p>` : ''}
     </div>`).join('');
 
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">01</span>Hoje</h1>
+      <div class="ghost">01</div>
+      <h1><span class="n">seção 01 · começo de sessão</span>Hoje</h1>
       <p class="sub">O painel é o rosto. Quem constrói é o Claude Code — abre ele nessa pasta e manda <code>/abrir</code>.</p>
     </div>
     ${hoje.vazio ? `
       <div class="card">
-        <h3>Ainda não tem histórico por aqui 👋</h3>
+        <h3>Ainda não tem histórico por aqui</h3>
         <p class="soft">Sua primeira sessão começa no Claude Code: abre o terminal nessa pasta e roda <code>/instalar</code> (se for a primeira vez) ou <code>/abrir</code>. Quando você fechar a sessão com <code>/fechar</code>, o "onde paramos" aparece aqui sozinho.</p>
       </div>` : entradas}
     <div class="card">
       <div class="mini">atalhos</div>
       <div class="linha-form" style="flex-wrap:wrap">
-        <button class="btn primario" data-copiar="/abrir">📋 copiar /abrir</button>
-        <button class="btn" data-copiar="/fechar">📋 copiar /fechar</button>
-        <button class="btn" onclick="location.hash='#frentes'">🧭 ver as frentes</button>
-        <button class="btn" onclick="location.hash='#arsenal'">🔌 arsenal (${conectados}/${config.itens.length} conectado${conectados === 1 ? '' : 's'})</button>
+        <button class="btn primario" data-copiar="/abrir">copiar /abrir</button>
+        <button class="btn" data-copiar="/fechar">copiar /fechar</button>
+        <button class="btn" onclick="location.hash='#frentes'">frentes →</button>
+        <button class="btn" onclick="location.hash='#arsenal'">arsenal · ${conectados}/${config.itens.length} on</button>
       </div>
     </div>`;
 }
@@ -165,7 +166,8 @@ async function renderFrentes() {
   const frentes = await carregarFrentes();
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">02</span>Frentes</h1>
+      <div class="ghost">02</div>
+      <h1><span class="n">seção 02 · o que o sistema constrói</span>Frentes</h1>
       <p class="sub">Cada frente é um comando no Claude Code. Clica pra ver o quê ela entrega, ligar referências e copiar o briefing pronto.</p>
     </div>
     <div class="grade">
@@ -227,14 +229,14 @@ async function renderFrente(id) {
       </div>
     </div>
 
-    <div class="card" style="border-color:var(--orange-bd)">
-      <div class="mini laranja">briefing pronto — o passe pro Claude Code</div>
+    <div class="card destaque">
+      <div class="mini">briefing pronto — o passe pro Claude Code</div>
       <p class="muted" style="font-size:13px; margin:6px 0 10px">Escreve o que você quer, copia e cola no Claude Code. O comando já manda ele ler teu arsenal e tuas referências.</p>
       <textarea id="brief-input" rows="2" placeholder="ex: um site pro meu estúdio de pilates, tom acolhedor, quero agendamento pelo WhatsApp"></textarea>
       <div class="linha-form">
-        <button class="btn primario" id="brief-copiar">📋 copiar briefing pro Claude Code</button>
+        <button class="btn primario" id="brief-copiar">copiar briefing → claude code</button>
       </div>
-      <div class="bloco-cmd" id="brief-preview" style="margin-top:10px"></div>
+      <div class="bloco-cmd" id="brief-preview" style="margin-top:12px"></div>
     </div>
 
     ${saidas.length ? `
@@ -259,7 +261,7 @@ async function renderFrente(id) {
   $('#brief-copiar').addEventListener('click', () => copiar(montaBrief()));
   $('#ref-add').addEventListener('click', async () => {
     const url = $('#ref-url').value.trim(), nota = $('#ref-nota').value.trim();
-    if (!url && !nota) return toast('Cola um link ou escreve uma nota primeiro 😉');
+    if (!url && !nota) return toast('Cola um link ou escreve uma nota primeiro');
     try {
       await api('/api/referencia', { frente: id, url, nota });
       toast('Guardei! O Claude vai ler isso quando construir.');
@@ -287,9 +289,10 @@ async function renderArsenal() {
 
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">03</span>Arsenal</h1>
-      <p class="sub">${conectados} de ${config.itens.length} conectados. O DutyX funciona sem nada disso — o arsenal é o modo turbo, e é quase todo grátis. Clica num item pra conectar.</p>
-      <div class="linha-form"><button class="btn mini" id="resondar">🔎 checar de novo</button></div>
+      <div class="ghost">03</div>
+      <h1><span class="n">seção 03 · ${conectados}/${config.itens.length} conectados</span>Arsenal</h1>
+      <p class="sub">O DutyX funciona sem nada disso — o arsenal é o modo turbo, e é quase todo grátis. Clica num item pra conectar.</p>
+      <div class="linha-form"><button class="btn mini" id="resondar">checar de novo</button></div>
     </div>
     ${Object.entries(grupos).map(([tipo, itens]) => `
       <div class="card">
@@ -332,17 +335,17 @@ async function renderArsenalItem(id) {
         <input type="password" id="env-valor" placeholder="cola a chave aqui (fica no .env, só no seu PC)">
         <button class="btn primario" id="env-salvar">salvar no .env</button>
       </div>
-      <p class="muted" style="font-size:11.5px; margin-top:8px">🔒 o .env nunca é versionado nem sai da sua máquina. A chave aparece mascarada aqui.</p>`;
+      <p class="muted" style="font-size:11.5px; margin-top:8px">o .env nunca é versionado nem sai da sua máquina. A chave aparece mascarada aqui.</p>`;
   } else if (item.acaoPainel === 'toggle-manual') {
     acao = `
       <div class="mini">marcação manual</div>
       <p class="muted" style="font-size:13px; margin:6px 0">Conector do app Claude — o painel não consegue "enxergar" ele. Ligou lá? Marca aqui.</p>
-      <button class="btn ${conectado ? '' : 'primario'}" id="toggle-btn">${conectado ? 'desmarcar (desliguei)' : '✅ marquei — tá conectado no app'}</button>`;
+      <button class="btn ${conectado ? '' : 'primario'}" id="toggle-btn">${conectado ? 'desmarcar (desliguei)' : 'marquei — tá conectado no app'}</button>`;
   } else {
     acao = `
       <div class="mini">como conectar</div>
       <p class="soft" style="font-size:13.5px; margin:6px 0; white-space:pre-line">${esc(item.instrucao || 'Segue o guia abaixo.')}</p>
-      ${/claude mcp add|npm install|winget|node scripts/.test(item.instrucao || '') ? `<button class="btn" id="instrucao-copiar">📋 copiar comando</button>` : ''}`;
+      ${/claude mcp add|npm install|winget|node scripts/.test(item.instrucao || '') ? `<button class="btn" id="instrucao-copiar">copiar comando</button>` : ''}`;
   }
 
   conteudo.innerHTML = `
@@ -357,11 +360,11 @@ async function renderArsenalItem(id) {
 
   $('#env-salvar')?.addEventListener('click', async () => {
     const valor = $('#env-valor').value.trim();
-    if (!valor) return toast('Cola a chave primeiro 😉');
+    if (!valor) return toast('Cola a chave primeiro');
     try {
       const d = await api('/api/env', { chave: item.deteccao.env, valor });
       cache.estado = d.estado;
-      toast('Chave salva no .env ✅');
+      toast('Chave salva no .env');
       renderArsenalItem(id);
     } catch (e) { toast(e.message); }
   });
@@ -369,7 +372,7 @@ async function renderArsenalItem(id) {
     try {
       const d = await api('/api/toggle', { id, status: conectado ? 'faltando' : 'manual-ok' });
       cache.estado = d.estado;
-      toast(conectado ? 'Desmarcado.' : 'Marcado como conectado ✅');
+      toast(conectado ? 'Desmarcado.' : 'Marcado como conectado');
       renderArsenalItem(id);
     } catch (e) { toast(e.message); }
   });
@@ -381,13 +384,14 @@ async function renderArsenalItem(id) {
 
 // ---------- seção: SAÍDAS ----------
 
-const ICONE_EXT = { '.md': '📝', '.txt': '📝', '.pdf': '📄', '.json': '🔧', '.csv': '📊', '.mp4': '🎬', '.mp3': '🎵' };
+const ICONE_EXT = { '.md': 'MD', '.txt': 'TXT', '.pdf': 'PDF', '.json': 'JSON', '.csv': 'CSV', '.mp4': 'MP4', '.mp3': 'MP3' };
 
 async function renderSaidas() {
   const { saidas } = await api('/api/saidas');
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">04</span>Saídas</h1>
+      <div class="ghost">04</div>
+      <h1><span class="n">seção 04 · o que você já criou</span>Saídas</h1>
       <p class="sub">Tudo que o Claude Code gera cai em <code>saidas/</code> — e aparece aqui ao vivo. Clica pra abrir.</p>
     </div>
     ${saidas.length ? `<div class="galeria">
@@ -396,7 +400,7 @@ async function renderSaidas() {
         let visor;
         if (['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg'].includes(s.ext)) visor = `<img src="${href}" loading="lazy" alt="">`;
         else if (s.ext === '.html') visor = `<iframe src="${href}" loading="lazy" tabindex="-1"></iframe>`;
-        else visor = `<span class="icone">${ICONE_EXT[s.ext] || '📦'}</span>`;
+        else visor = `<span class="icone">${ICONE_EXT[s.ext] || esc(s.ext.replace('.', '').toUpperCase() || 'FILE')}</span>`;
         return `
         <div class="thumb" onclick="window.open('${href}','_blank')">
           <div class="visor">${visor}</div>
@@ -410,7 +414,7 @@ async function renderSaidas() {
     <div class="card">
       <h3>Ainda não tem nada em <code>saidas/</code></h3>
       <p class="soft">Normal — você ainda não construiu com o Claude Code. Escolhe uma frente, copia o briefing e manda ver. Quando ele gerar, aparece aqui sozinho (sem recarregar).</p>
-      <div class="linha-form"><button class="btn primario" onclick="location.hash='#frentes'">🧭 escolher uma frente</button></div>
+      <div class="linha-form"><button class="btn primario" onclick="location.hash='#frentes'">escolher uma frente →</button></div>
     </div>`}
   `;
 }
@@ -429,7 +433,8 @@ async function renderMemoria(arq) {
   if (arq) return renderMemoriaArquivo(arq);
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">05</span>Memória</h1>
+      <div class="ghost">05</div>
+      <h1><span class="n">seção 05 · o que o sistema sabe de você</span>Memória</h1>
       <p class="sub">O <code>_contexto/</code> é o que faz o sistema LEMBRAR de você. O Claude lê isso em toda sessão. Edita com cuidado — todo salvamento faz backup automático.</p>
     </div>
     <div class="grade">
@@ -459,7 +464,7 @@ async function renderMemoriaArquivo(arq) {
       <div class="mini">editar (backup automático antes de salvar)</div>
       <textarea id="mem-editor" rows="16" style="margin-top:8px">${esc(texto)}</textarea>
       <div class="linha-form">
-        <button class="btn primario" id="mem-salvar">💾 salvar (com backup)</button>
+        <button class="btn primario" id="mem-salvar">salvar (com backup)</button>
         <button class="btn" onclick="renderMemoriaArquivo('${esc(arq)}')">descartar mudanças</button>
       </div>
     </div>`}
@@ -467,7 +472,7 @@ async function renderMemoriaArquivo(arq) {
   $('#mem-salvar')?.addEventListener('click', async () => {
     try {
       const d = await api('/api/memoria', { arquivo: arq, conteudo: $('#mem-editor').value });
-      toast(d.aviso || 'Salvo ✅');
+      toast(d.aviso || 'Salvo');
       renderMemoriaArquivo(arq);
     } catch (e) { toast(e.message); }
   });
@@ -479,7 +484,8 @@ window.renderMemoriaArquivo = renderMemoriaArquivo;
 function renderGuia() {
   conteudo.innerHTML = `
     <div class="secao-cabeca">
-      <h1><span class="n">06</span>Guia</h1>
+      <div class="ghost">06</div>
+      <h1><span class="n">seção 06 · o manual do sistema</span>Guia</h1>
       <p class="sub">O manual visual do DutyX — o mesmo <code>GUIA.html</code> da pasta. <a href="/guia" target="_blank">abrir em tela cheia ↗</a></p>
     </div>
     <iframe class="quadro-guia" src="/guia"></iframe>`;
@@ -509,7 +515,7 @@ async function rotear() {
     else if (base === 'memoria' && sub) await renderMemoriaArquivo(decodeURIComponent(sub));
     else await (ROTAS[base] || renderHoje)();
   } catch (e) {
-    conteudo.innerHTML = `<div class="card"><h3>Opa, algo deu errado 😅</h3><p class="soft">${esc(e.message)}</p><p class="muted" style="font-size:12.5px">Se persistir: fecha essa janela, volta no terminal e roda <code>npm run painel</code> de novo.</p></div>`;
+    conteudo.innerHTML = `<div class="card"><h3>Opa, algo deu errado</h3><p class="soft">${esc(e.message)}</p><p class="muted" style="font-size:12.5px">Se persistir: fecha essa janela, volta no terminal e roda <code>npm run painel</code> de novo.</p></div>`;
   }
 }
 window.addEventListener('hashchange', rotear);
@@ -531,7 +537,7 @@ function ligarEventos() {
         if (d.tipo !== 'mudanca') return;
         cache.frentes = null;
         if (['saidas', 'hoje', 'memoria', 'frentes'].includes(rotaAtual)) rotear();
-        if (d.origem === 'saidas') toast('✨ saída nova do Claude Code — atualizei a galeria');
+        if (d.origem === 'saidas') toast('saída nova do Claude Code — galeria atualizada');
       } catch { /* evento estranho, ignora */ }
     };
     es.onerror = () => { es.close(); setTimeout(ligarEventos, 4000); };
