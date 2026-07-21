@@ -47,5 +47,8 @@ A transcrição do DutyX (no `/aprender-video` e no `/metricas`) **roda com o Wh
 
 **Modo diagnóstico:** pra checar se tá tudo no lugar SEM precisar de um vídeo, rode `node scripts/transcrever.mjs --check` — ele confere ffmpeg, o executável do Whisper e o modelo, e diz exatamente o que falta. Use isso ANTES da primeira transcrição de verdade, e sempre que der erro estranho.
 
+## O jeito visual de fazer tudo isso: o painel
+O painel do DutyX (`npm run painel` → abre no navegador, só no PC da pessoa) mostra o arsenal inteiro com o status real de cada item — ✅ conectado / ❌ faltando — e deixa: salvar chave de API (vai pro `.env` local), marcar conectores do app como ligados e ver o passo a passo de cada ferramenta. **Ofereça o painel como primeiro caminho** ("quer ver isso em tela, em vez de por texto? roda `npm run painel`"), e conduza por aqui pra quem preferir o chat. Depois de qualquer conexão, o painel/sonda atualiza `_contexto/arsenal.md` — é lá que você confere o que já tá ligado sem perguntar de novo (a sonda também roda por comando: `node scripts/checar_arsenal.mjs`).
+
 ## Regra de ouro
 Nada aqui é obrigatório pro DutyX funcionar, e o que dá o melhor resultado é **grátis**. Pago (Higgsfield) é só pra quem quer um extra. **Nunca** dê a entender que a pessoa "precisa" de algo pago pra começar — ela começa hoje, no básico, e liga o arsenal grátis quando quiser.

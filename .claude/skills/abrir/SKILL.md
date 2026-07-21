@@ -12,7 +12,7 @@ Carrega tudo que o DutyX sabe sobre a pessoa e entrega um norte do dia em poucos
 
 ## O que fazer
 
-1. Leia `_contexto/negocio.md`, `_contexto/marca.md`, `_contexto/estrategia.md` e `_contexto/historico.md`.
+1. Leia `_contexto/negocio.md`, `_contexto/marca.md`, `_contexto/estrategia.md` e `_contexto/historico.md`. **Se existirem**, leia também `_contexto/arsenal.md` (o que tá conectado — vem do painel/sonda) e dê uma olhada em `_contexto/referencias/` (referências que a pessoa colou no painel, por frente) — use os dois sem anunciar, pra não oferecer o que já tá ligado nem pedir referência que ela já deu.
 2. Se o `_contexto/` ainda estiver vazio (modelo com ⏳), não siga — diga: "Parece que a gente ainda não se conhece. Roda `/instalar` primeiro que é rapidinho." e pare.
 3. **Radar silencioso** (não anuncie que checou):
    - Se a última entrada do `historico.md` tiver um pendente/próximo passo explícito, ele vira a PRIMEIRA opção do foco de hoje ("a gente combinou de X — bora?").

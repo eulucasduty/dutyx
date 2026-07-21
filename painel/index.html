@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DutyX — Painel</title>
+<link rel="stylesheet" href="/estilo.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟠</text></svg>">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="brand">Duty<span class="x">X</span></div>
+  <div class="kick">seu sistema · painel local</div>
+  <nav class="nav">
+    <a href="#hoje" data-rota="hoje"><span class="ic">☀️</span> Hoje</a>
+    <a href="#frentes" data-rota="frentes"><span class="ic">🧭</span> Frentes</a>
+    <a href="#arsenal" data-rota="arsenal"><span class="ic">🔌</span> Arsenal</a>
+    <a href="#saidas" data-rota="saidas"><span class="ic">📦</span> Saídas</a>
+    <a href="#memoria" data-rota="memoria"><span class="ic">🧠</span> Memória</a>
+    <a href="#guia" data-rota="guia"><span class="ic">📖</span> Guia</a>
+  </nav>
+  <div class="rodape">
+    <span class="vivo">●</span> rodando só no seu PC<br>
+    nada daqui sai da máquina.<br>
+    quem gera é o Claude Code —<br>
+    o painel mostra e prepara.
+  </div>
+</aside>
+
+<main class="main" id="conteudo">
+  <!-- o app.js renderiza aqui -->
+</main>
+
+<div id="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

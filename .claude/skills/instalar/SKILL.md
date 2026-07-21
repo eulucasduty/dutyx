@@ -67,6 +67,7 @@ Diga: "Ó, já te entrego isso de brinde pra você ver que funciona."
 ## Fase 5 — Resumo + próximo passo
 1. **Registre a primeira entrada** em `_contexto/historico.md` (no formato padrão, abaixo do traço): `### AAAA-MM-DD — DutyX instalado` + 1-2 linhas (perfil escolhido, vitória rápida entregue, próximo passo: a frente sugerida). É isso que faz o primeiro `/abrir` já lembrar de hoje.
 2. Mostre o que ficou configurado (perfil, negócio, marca, foco — em 4-5 linhas de check). Feche no tom do Lucas: "Pronto, o DutyX te conhece. Sempre que sentar pra trabalhar, `/abrir`; quando terminar, `/fechar`. Pra construir, chama a frente — sugiro começar por **[frente que ataca o gargalo]**. E quando quiser guardar tudo num cofre seu, `/salvar`."
+   Depois, **apresente o painel visual**: "E tem mais uma coisa: teu sistema tem um rosto. Roda `npm run painel` aqui no terminal que abre o painel no navegador — dá pra VER as frentes, o arsenal, tudo que a gente criar aparecendo ao vivo. Quer que eu abra agora?" Se ela topar, rode `npm run painel` você mesmo (o painel abre o navegador sozinho e fica rodando — avise que pra fechar é Ctrl+C naquela janela, e que o Claude Code continua noutra janela do terminal).
 3. **Ensine o gesto de voltar amanhã** (a pessoa pode não saber): "amanhã é só abrir essa pasta no Explorador, digitar `powershell` na barra de endereço (no Mac: abrir o Terminal e arrastar a pasta depois de digitar `cd `), Enter, digitar `claude` e mandar `/abrir`."
 
 ## Regras

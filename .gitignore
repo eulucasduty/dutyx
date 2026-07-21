@@ -2,6 +2,11 @@
 .DS_Store
 Thumbs.db
 
+# Estado da MÁQUINA (a sonda/painel regenera sozinha — não faz sentido versionar)
+painel/estado.json
+_contexto/arsenal.md
+_contexto/.backup/
+
 # Node (se algum script opcional usar)
 node_modules/
 

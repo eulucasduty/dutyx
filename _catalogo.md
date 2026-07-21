@@ -13,6 +13,7 @@
 | `/atualizar` | Reconcilia a memória com a realidade: detecta o que mudou no negócio e propõe ajustes no `_contexto/`. | mudou o foco/oferta/negócio, ou a memória envelheceu. |
 | `/configurar` | Liga o arsenal turbo (Whisper local, Windsor, Meta, Notion, render de carrossel; Higgsfield é o único pago — opcional) — quase tudo grátis. Ver pasta `setup/`. | quer o melhor resultado. Opcional: o básico funciona sem nada. |
 | `/aprender-video` | Você joga uma técnica que achou por aí (reel, tutorial, print, link, texto) e o DutyX **absorve a lógica** e integra no sistema. | "aprende esse vídeo", "traz essa técnica pro DutyX". |
+| `npm run painel` | Abre o **painel visual** no navegador (só no seu PC): frentes clicáveis, arsenal com status real, saídas ao vivo, memória. O painel não gera nada — ele mostra o sistema e prepara o briefing pro Claude Code. | quer VER o sistema em vez de ler pasta. |
 
 ## 🏗️ Construção (páginas e sites)
 
@@ -51,6 +52,7 @@
 - `setup/` — guias do arsenal (turbo, opcional) + o `socorro.md` (primeiros socorros do dia 1).
 - `scripts/` — utilitários (ex: transcrever vídeo; `node scripts/transcrever.mjs --check` diagnostica).
 - `saidas/` — tudo que você criar fica aqui. E vai junto no backup privado do `/salvar`.
+- `painel/` — o rosto do sistema: `npm run painel` abre um painel local no navegador com tudo isso desenhado.
 
 > O DutyX cresce. Frentes e aulas novas vão sendo adicionadas — quando chegar uma, ela aparece aqui.
 

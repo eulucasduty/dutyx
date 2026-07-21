@@ -1,0 +1,10 @@
+{
+  "name": "dutyx",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DutyX — seu sistema de marketing com IA. `npm run painel` abre o painel visual.",
+  "type": "module",
+  "scripts": {
+    "painel": "node painel/server.mjs"
+  }
+}
